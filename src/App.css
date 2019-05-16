@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+input.Input {
+  padding: 25px;
+  width: 66%;
+  font-size: 25px;
+  text-align: center;
+}
+button.button {
+  padding: 25px;
+  margin: 10px;
+  width: 36%;
+  font-size: 30px;
+}
