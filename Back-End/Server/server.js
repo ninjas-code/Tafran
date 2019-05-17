@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
     password:"1111",
     database: 'foodApp'
 });
-
+console.log("Hi")
 connection.connect();
 
 connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
