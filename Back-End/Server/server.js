@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
-const PORT = 3500;
+const PORT = 3000;
 const bodyparser = require('body-parser')
 const mysql = require('mysql');
+const path = require('path');
 // to creare the connection
 const connection = mysql.createConnection({
     host : 'localhost',
@@ -42,7 +43,7 @@ app.get("/CRTable",(req,res)=>{
       res.send("Table Was Created")
     })
   });
-  
+
    // Create User Inside The Databasce /* TEST FOR ADMIN ACCOUNT*/
   app.get("/CN",(req,res)=>{
   let newRestaurant = {
@@ -66,7 +67,7 @@ app.get("/getUsers",(req,res)=>{
  connection.query(serchItem,(err,result)=>{
     if(err) throw err;
     console.log(result);
-    res.send("User Was Added")
+    res.send("This all the users")
 
   });
 });
@@ -77,7 +78,7 @@ app.get("/getoneUser",(req,res)=>{
   connection.query(serchItem,(err,result)=>{
     if(err) throw err;
     console.log(result);
-    res.send("this the Users")
+    res.send("this the User")
 
   });
 });
@@ -96,11 +97,14 @@ connection.connect((err)=>{
 });
 
 
+// THE SERVER
+app.use(express.static('public'))
+
+app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../src",'index.js')));
 
 
-app.get('/',(req, res) => res.send("Hello"));
 
-app.get('/',(res,req) => res.sendfile('index.html'));
+//app.get('/',(res,req) => res.sendfile('index.html'));
 
 
 app.listen(PORT, () => console.log("The Server is working on "+PORT));
