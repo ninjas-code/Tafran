@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import ReactDOM from 'react-dom'
+import logo, { ReactComponent } from './logo.svg';
 import './App.css';
+import $ from 'jquery'; 
+import { BrowserRouter , Route , Switch} from 'react-router-dom';
+import Food from './components/food.jsx';
+import Err from './components/404Page.jsx';
+import Navgation from './components/Nav.jsx';
+import Login from './components/login.jsx';
 
-function App() {
+
+class App extends React.Component {
+   /* <Route path="/test" component={test} />
+    <Route path="/test1" component={Food} />*/ 
+render(){
   return (
+    <BrowserRouter>
+    
     <div className="App">
-      <header className="App-header">
-        <h1 className="title">Put the Price</h1>
-        <input className="Input"/>
-        <button className="button">EAT</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Navgation></Navgation>
+
+      <Switch>
+      <Route path="/" component={Food} exact/>
+      <Route path="/login" component={Login} exact/>
+      <Route component={Err} exact/>
+      </Switch>
+      </div>
+     
+    </BrowserRouter>
   );
+  }
 }
 
 export default App;
