@@ -42,11 +42,16 @@ app.get("/CRTable",(req,res)=>{
       res.send("Table Was Created")
     })
   });
-   // Create User Inside The Databasce
-   app.get("/CN",(req,res)=>{
-  let newRestaurant = {Name:'Mcdonales',address:"Amman",Food:"hamburger",Phonenumber:'07757231'}
-  let sql = 'INSERT into restaurants ?';
-  let query = connection.query(sql,newRestaurant,(err,result)=>{
+   // Create User Inside The Databasce /* TEST FOR ADMIN ACCOUNT*/
+  app.get("/CN",(req,res)=>{
+  let newRestaurant = {
+    Name:'KFC',
+    address:"Amman",
+    Food:"hamburger",
+    Phonenumber:'07757231'
+  };
+  const added = 'INSERT INTO restaurants SET ?'
+  connection.query(added,newRestaurant,(err,result)=>{
     if(err) throw err;
     console.log(result);
     res.send("User Was Added")
