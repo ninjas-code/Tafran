@@ -7,16 +7,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1 className="title">Put the Price</h1>
-        <input className="Input"/>
+        <input className="Input" placeholder="in how mutch you want to eat"/>
         <button className="button">EAT</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
       </header>
     </div>
   );
