@@ -30,7 +30,7 @@ class App extends React.Component {
   }
 
   sendPriceToServer(e) {
-    console.log(this.state.Name)
+    console.log(this.state.Name )
     
     var obj = {
       name: this.state.Price
