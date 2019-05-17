@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom'
 import logo, { ReactComponent } from './logo.svg';
 import './App.css';
 import $ from 'jquery'; 
-import { BrowserRouter , Route} from 'react-router-dom';
+import { BrowserRouter , Route , Switch} from 'react-router-dom';
 import Food from './components/food.jsx';
+import Err from './components/404Page.jsx';
+import Navgation from './components/Nav.jsx';
+import Login from './components/login.jsx';
 
 
 class App extends React.Component {
@@ -15,7 +18,13 @@ render(){
     <BrowserRouter>
     
     <div className="App">
-      <Route path="/" component={Food} />
+      <Navgation></Navgation>
+
+      <Switch>
+      <Route path="/" component={Food} exact/>
+      <Route path="/login" component={Login} exact/>
+      <Route component={Err} exact/>
+      </Switch>
       </div>
      
     </BrowserRouter>
