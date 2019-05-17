@@ -42,6 +42,7 @@ app.get("/CRTable",(req,res)=>{
       res.send("Table Was Created")
     })
   });
+  
    // Create User Inside The Databasce /* TEST FOR ADMIN ACCOUNT*/
   app.get("/CN",(req,res)=>{
   let newRestaurant = {
@@ -62,7 +63,7 @@ app.get("/CRTable",(req,res)=>{
 // Search Into the database and appear all the data
 app.get("/getUsers",(req,res)=>{
   let serchItem = 'SELECT * FROM restaurants';
-  let query = connection.query(serchItem,(err,result)=>{
+ connection.query(serchItem,(err,result)=>{
     if(err) throw err;
     console.log(result);
     res.send("User Was Added")
@@ -73,10 +74,10 @@ app.get("/getUsers",(req,res)=>{
 // Search Into the database and appear all the data
 app.get("/getoneUser",(req,res)=>{
   let serchItem = 'SELECT * FROM restaurants WHERE Name'
-  let query = connection.query(serchItem,(err,result)=>{
+  connection.query(serchItem,(err,result)=>{
     if(err) throw err;
     console.log(result);
-    res.send("User Was Added")
+    res.send("this the Users")
 
   });
 });
@@ -84,12 +85,7 @@ app.get("/getoneUser",(req,res)=>{
 
 
 
-//     connection.query(CreateTable,(err,result)=>{
-//     if(err) throw err
-//     console.log(result);
-//     res.send('The Restarurants Table Created');
-//   })
-// })
+
 
 // The connection made
 connection.connect((err)=>{
@@ -101,10 +97,7 @@ connection.connect((err)=>{
 
 
 
-// connection.query('SELECT 1+1 AS solution', function (error, results, fields) {
-//     if (error) throw error;
-//     console.log('The solution is: ', results[0].solution);
-//   });
+
 app.get('/',(req, res) => res.send("Hello"));
 
 app.get('/',(res,req) => res.sendfile('index.html'));
