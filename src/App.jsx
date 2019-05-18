@@ -18,7 +18,7 @@ render(){
     <BrowserRouter>
     
     <div className="App">
-      <h1>ffff</h1>
+      
       <Navgation></Navgation>
 
       <Switch>

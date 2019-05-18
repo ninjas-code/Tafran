@@ -61,7 +61,7 @@ app.get("/CRTable",(req,res)=>{
   })
 })
 
-// Search Into the database and appear all the data
+// Search Into the database   and appear all the data
 app.get("/getUsers",(req,res)=>{
   let serchItem = 'SELECT * FROM restaurants';
  connection.query(serchItem,(err,result)=>{
