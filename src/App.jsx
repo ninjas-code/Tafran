@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
-import logo, { ReactComponent } from './logo.svg';
 import './App.css';
 import $ from 'jquery'; 
 import { BrowserRouter , Route , Switch} from 'react-router-dom';
@@ -11,14 +9,12 @@ import Login from './components/login.jsx';
 
 
 class App extends React.Component {
-   /* <Route path="/test" component={test} />
-    <Route path="/test1" component={Food} />*/ 
 render(){
   return (
     <BrowserRouter>
     
     <div className="App">
-      <Navgation></Navgation>
+      <Navgation className="Nav"></Navgation>
 
       <Switch>
       <Route path="/" component={Food} exact/>

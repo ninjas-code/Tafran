@@ -48,10 +48,10 @@ app.get("/CRTable",(req,res)=>{
    // Create User Inside The Databasce /* TEST FOR ADMIN ACCOUNT*/
   app.get("/CN",(req,res)=>{
   let newRestaurant = {
-    Name:'KFC',
+    Name:'Pizza Hut',
     address:"Amman",
-    Food:"hamburger",
-    Phonenumber:'07757231'
+    Food:"Pizza",
+    Phonenumber:'07756893'
   };
   const added = 'INSERT INTO restaurants SET ?'
   connection.query(added,newRestaurant,(err,result)=>{
