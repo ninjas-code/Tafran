@@ -49,7 +49,7 @@ app.get("/CRTable",(req,res)=>{
   app.get("/CN",(req,res)=>{
   let newRestaurant = {
     Name:'Pizza Hut',
-    address:"Amman",
+    address:"Irbid",
     Food:"Pizza",
     Phonenumber:'07756893'
   };
@@ -101,7 +101,28 @@ connection.connect((err)=>{
 // THE SERVER
 app.use(express.static('public'))
 
-app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
+app.get('/',(req, res) =>{ 
+  
+  res.sendFile(path.join(__dirname,"../../public",'index.html'))
+
+  app.get('/', function(req,res){
+    connection.query('SELECT Name from restaurants where Name like "%'+req.body.price+'%"',
+    function(err,rows,fields){
+      if(err) throw err;
+      var data = [];
+      var x =0;
+      console.log(rows);
+      for(x=0;x<rows.length;x++)
+      {
+        data.push(rows[x].Name);
+      }
+      res.end(JSON.stringify(data));
+
+    })
+
+  })
+
+});
 
 
 
