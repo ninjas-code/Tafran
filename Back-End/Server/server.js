@@ -25,6 +25,8 @@ app.get("/CRDATA",(req,res)=>{
 
   });
 });
+//connection.end();
+
 //create table inside DB
 app.get("/CRTable",(req,res)=>{
 
@@ -105,6 +107,5 @@ app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index
 
 //app.get('/',(res,req) => res.sendfile('index.html'));
 
-connection.end();
 
 app.listen(PORT, () => console.log("The Server is working on "+PORT));
