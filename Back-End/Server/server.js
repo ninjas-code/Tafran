@@ -22,10 +22,11 @@ app.get("/CRDATA",(req,res)=>{
     console.log(result);
     res.send("The Database was created successfully")
     console.log("Data Base Created")
-    connection.end();
 
   });
 });
+//connection.end();
+
 //create table inside DB
 app.get("/CRTable",(req,res)=>{
 
@@ -100,7 +101,7 @@ connection.connect((err)=>{
 // THE SERVER
 app.use(express.static('public'))
 
-app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../src",'index.js')));
+app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
 
 
 
