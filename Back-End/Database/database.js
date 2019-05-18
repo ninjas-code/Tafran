@@ -1,3 +1,10 @@
+
+
+//creating schema but it's not completed it still need modifying 
+
+
+
+
 CREATE DATABASE  IF NOT EXISTS `fdp` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `fdp`;
 // -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
@@ -40,9 +47,8 @@ INSERT INTO `meals` VALUES (1,'شاورما'),(2,'زنجر'),(3,'حمص'),(4,'م
 /*!40000 ALTER TABLE `meals` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `mealtype`
---
+// -- Table structure for table `mealtype`
+
 
 DROP TABLE IF EXISTS `mealtype`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
