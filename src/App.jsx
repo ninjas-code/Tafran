@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom'
 import './App.css';
 import { BrowserRouter , Route , Switch} from 'react-router-dom';
 import Food from './components/food.jsx';
-import Err from './components/404Page.jsx';
+// import Err from './components/404Page.jsx';
 import Navgation from './components/Nav.jsx';
-import Login from './components/login.jsx';
-import MealsList from './components/mealsList.jsx';
-import Resturant from './components/resturant';
+// import Login from './components/login.jsx';
+// import MealsList from './components/mealsList.jsx';
+// import Resturant from './components/resturant';
 
 
 
