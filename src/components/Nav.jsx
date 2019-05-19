@@ -6,7 +6,7 @@ const Navgation =() =>{
     return(
 
        <NavLink to="/login">login as admin</NavLink> 
-
+        
 
     )
 
