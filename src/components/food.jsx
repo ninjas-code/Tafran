@@ -52,16 +52,16 @@ class Food extends React.Component{
       {/* <button>SXHOW/HIDE</button> */}
 
       <form method="POST">
-      <h1 className="title">Put the Price</h1>
       
-      <input className="Input" 
-      placeholder="in how mutch you want to eat" 
+      
+      <input className="input" 
+      placeholder="Your Budget" 
       value= {this.state.Price} 
       onChange={this.handelPriceChange.bind(this)} 
       name="price"/>
 
-      <button className="button" 
-      onClick={this.sendPriceToServer.bind(this)} >EAT</button>
+      <button className="search" 
+      onClick={this.sendPriceToServer.bind(this)} >Search</button>
       </form>
     </header>
   
