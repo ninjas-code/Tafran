@@ -22,11 +22,10 @@ app.get("/CRDATA",(req,res)=>{
     console.log(result);
     res.send("The Database was created successfully")
     console.log("Data Base Created")
+    connection.end();
 
   });
 });
-//connection.end();
-
 //create table inside DB
 app.get("/CRTable",(req,res)=>{
 
@@ -40,7 +39,7 @@ app.get("/CRTable",(req,res)=>{
     connection.query(CreateTable,(err,result)=>{
       if(err) throw err;
       console.log(result);
-      console.log("Table Was Created On Sucessfully")
+      console.log("Table Was Created On Successfully")
       res.send("Table Was Created")
     })
   });
@@ -48,10 +47,10 @@ app.get("/CRTable",(req,res)=>{
    // Create User Inside The Databasce /* TEST FOR ADMIN ACCOUNT*/
   app.get("/CN",(req,res)=>{
   let newRestaurant = {
-    Name:'Pizza Hut',
-    address:"Irbid",
-    Food:"Pizza",
-    Phonenumber:'07756893'
+    Name:'mac',
+    address:"Amman",
+    Food:"hamburger",
+    Phonenumber:'07757231'
   };
   const added = 'INSERT INTO restaurants SET ?'
   connection.query(added,newRestaurant,(err,result)=>{
@@ -62,7 +61,7 @@ app.get("/CRTable",(req,res)=>{
   })
 })
 
-// Search Into the database and appear all the data
+// Search Into the database   and appear all the data
 app.get("/getUsers",(req,res)=>{
   let serchItem = 'SELECT * FROM restaurants';
  connection.query(serchItem,(err,result)=>{
@@ -101,28 +100,7 @@ connection.connect((err)=>{
 // THE SERVER
 app.use(express.static('public'))
 
-app.get('/',(req, res) =>{ 
-  
-  res.sendFile(path.join(__dirname,"../../public",'index.html'))
-
-  app.get('/', function(req,res){
-    connection.query('SELECT Name from restaurants where Name like "%'+req.body.price+'%"',
-    function(err,rows,fields){
-      if(err) throw err;
-      var data = [];
-      var x =0;
-      console.log(rows);
-      for(x=0;x<rows.length;x++)
-      {
-        data.push(rows[x].Name);
-      }
-      res.end(JSON.stringify(data));
-
-    })
-
-  })
-
-});
+app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
 
 
 
