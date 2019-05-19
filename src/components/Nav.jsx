@@ -8,7 +8,7 @@ const Navgation =() =>{
         {/* <NavLink to="/login">login as admin</NavLink> <br></br>
        <NavLink to="/meals">show meals</NavLink><br></br>
        <NavLink to="/resturant">Shwo Resturants</NavLink><br></br> */}
-       <NavLink to="/">home</NavLink> 
+       {/* <NavLink to="/">home</NavLink>  */}
        </div>
 
 
