@@ -49,7 +49,7 @@ class Food extends React.Component{
     <div className="App">
     
     <header className="App-header">
-      <button>SHOW/HIDE</button>
+      <button>SXHOW/HIDE</button>
 
       <form method="POST">
       <h1 className="title">Put the Price</h1>
