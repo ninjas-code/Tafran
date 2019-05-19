@@ -2,6 +2,16 @@ import React from 'react';
 import { BrowserRouter , Route} from 'react-router-dom';
 import $ from 'jquery'; 
 
+
+
+const url = "http://localhost:3001/"; // site that doesn’t send Access-Control-*
+fetch(url)
+.then(response => response.text())
+.then(contents => console.log(contents))
+.catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+
+
+
 class Food extends React.Component{
   constructor(props) {
     super(props);
@@ -34,7 +44,8 @@ class Food extends React.Component{
     
           success: (data) => {
             that.setState({
-              items: data
+              items: data,
+              personr:null
             })
           },
           error: (err) => {
@@ -45,53 +56,39 @@ class Food extends React.Component{
 
       
 
-      state={
-        loading:true
-      };
-      async componentDidMount(){
-        const url = "https://api.randomuser.me/";
-        const respon = await fetch(url);
-        const data = await respon.json();
-        console.log(data);
-      }
 
-      state={
-        loading:true
-      };
       
+
+      // state={
+      //   loading:true
+      // };
+      // async componentDidMount(){
+      //   const url = "https://api.randomuser.me/";
+      //   const respon = await fetch(url);
+      //   const data = await respon.json();
+      //   console.log(data);
+      // }
+
+      state={
+        loading:true,
+        name:null
+      };
+      // headers.append('Access-Cntrol-Allow-Origin','http://localhost:3000');
       async componentDidMount(){
         const url = "https://api.randomuser.me/";
         const respon = await fetch(url);
         const data = await respon.json();
-        console.log(data,"data");
-      } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        this.setState({name:data.results[0],loading:false})
+      };
 
     render(){
         return(
       <BrowserRouter>      
     <div className="App">
-    {this.state.loading ? <div> loading... </div> : <div>Restruant</div>}
+    {this.state.loading || !this.state.name ? (
+    <div> loading... </div> ):(
+     <div>{this.state.name.name.first}</div>
+     )}
     <header className="App-header">
       <button>SHOW/HIDE</button>
 
