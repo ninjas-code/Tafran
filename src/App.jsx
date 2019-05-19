@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 
 import './App.css';
-import { BrowserRouter , Route , Switch} from 'react-router-dom';
+import { BrowserRouter , Route } from 'react-router-dom';
 import Food from './components/food.jsx';
 // import Err from './components/404Page.jsx';
 import Navgation from './components/Nav.jsx';
