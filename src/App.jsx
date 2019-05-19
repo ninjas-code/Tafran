@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 
 import './App.css';
-import $ from 'jquery'; 
 import { BrowserRouter , Route , Switch} from 'react-router-dom';
 import Food from './components/food.jsx';
 import Err from './components/404Page.jsx';
@@ -22,13 +21,14 @@ render(){
     <div className="App">
       
       
-     
+    <Navgation></Navgation>
 
-    <MealsList meals ={[{name:'meal1',price:2},{name:'meal2',price:4},{name:'meal3',price:3},{name:'meal4',price:5}]}/>
+    {/* <MealsList meals ={[{name:'meal1',price:2},{name:'meal2',price:4},{name:'meal3',price:3},{name:'meal4',price:5}]}/> */}
       
-      <Route exact path="/" component={Food} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/meals" component={MealsList} />
+      <Route  path="/" component={Food} exact />
+      <Route  path="/login" component={Login} exact />
+      <Route  path="/meals" render={(props) =>
+       <MealsList meals ={[{name:'meal1',price:2},{name:'meal2',price:4},{name:'meal3',price:3},{name:'meal4',price:5}]}/> } />
 
       <Route component={Err} exact />
       

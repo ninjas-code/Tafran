@@ -27,7 +27,7 @@ class Food extends React.Component{
         $.ajax({
           method: "POST",
           data: {
-      price: this.state.Price
+            obj
     },
           url: 'http://127.0.0.1:3000/price', 
           dataType: "application/json",
