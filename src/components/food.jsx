@@ -43,6 +43,8 @@ class Food extends React.Component{
         });
       } 
 
+      
+
       state={
         loading:true
       };
@@ -53,8 +55,16 @@ class Food extends React.Component{
         console.log(data);
       }
 
-
-
+      state={
+        loading:true
+      };
+      
+      async componentDidMount(){
+        const url = "https://api.randomuser.me/";
+        const respon = await fetch(url);
+        const data = await respon.json();
+        console.log(data);
+      }
 
 
 
