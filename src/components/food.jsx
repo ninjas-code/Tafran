@@ -63,8 +63,8 @@ class Food extends React.Component{
         const url = "https://api.randomuser.me/";
         const respon = await fetch(url);
         const data = await respon.json();
-        console.log(data);
-      }
+        console.log(data,"data");
+      } 
 
 
 
