@@ -2,8 +2,6 @@
 import React from 'react';
 import {browseRoute} from 'react-router-dom';
 
-
- 
 class MealsList extends React.Component {
 
 render(){
