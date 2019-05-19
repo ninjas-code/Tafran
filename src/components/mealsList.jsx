@@ -1,12 +1,15 @@
 // import FoodListEntry from './FoodListEntry.jsx';
 import React from 'react';
 
+import {browseRoute} from 'react-router-dom';
+
+
  
-class MealsList extends React.Component{
+class MealsList extends React.Component {
 
 render(){
 	console.log("ggggg")
-	
+
 		return(
 				<div>
 					<ul>
