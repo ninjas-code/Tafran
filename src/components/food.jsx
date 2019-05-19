@@ -27,7 +27,7 @@ class Food extends React.Component{
         $.ajax({
           method: "POST",
           data: {
-      id: this.state.id
+          id: this.state.id
     },
           url: 'localhost:3000/price', 
           dataType: "application/json",
@@ -43,11 +43,45 @@ class Food extends React.Component{
         });
       } 
 
+      state={
+        loading:true
+      };
+      async componentDidMount(){
+        const url = "https://api.randomuser.me/";
+        const respon = await fetch(url);
+        const data = await respon.json();
+        console.log(data);
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     render(){
         return(
       <BrowserRouter>      
     <div className="App">
-    
+    {this.state.loading ? <div> loading... </div> : <div>Restruant</div>}
     <header className="App-header">
       <button>SHOW/HIDE</button>
 

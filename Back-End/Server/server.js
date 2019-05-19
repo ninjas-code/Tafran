@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 const bodyparser = require('body-parser')
 const mysql = require('mysql');
 const path = require('path');
+const pino = require('express-pino-logger');
 // to creare the connection
 const connection = mysql.createConnection({
     host : 'localhost',
@@ -11,6 +12,7 @@ const connection = mysql.createConnection({
     password:"1111",
    database: 'restaurants'
 });
+// app.use(pino)
 
 // Create DB
 app.get("/CRDATA",(req,res)=>{
@@ -43,6 +45,10 @@ app.get("/CRTable",(req,res)=>{
       res.send("Table Was Created")
     })
   });
+
+  app.get("/price",(req,res)=>{
+    res.send("Done")
+  })
 
    // Create User Inside The Databasce /* TEST FOR ADMIN ACCOUNT*/
   app.get("/CN",(req,res)=>{
