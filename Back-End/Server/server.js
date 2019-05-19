@@ -40,7 +40,7 @@ app.get("/CRTable",(req,res)=>{
     connection.query(CreateTable,(err,result)=>{
       if(err) throw err;
       console.log(result);
-      console.log("Table Was Created On Successfully")
+      console.log("Table Was Created On Sucessfully")
       res.send("Table Was Created")
     })
   });
