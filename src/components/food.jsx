@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter  , Button} from 'react-router-dom';
-import $ from 'jquery'; 
+import { BrowserRouter  } from 'react-router-dom';
+
 import MealsList from './mealsList';
 
 class Food extends React.Component{
@@ -8,12 +8,13 @@ class Food extends React.Component{
     super(props);
     this.state = {
       Price: '',
-      mealList:[
-        { id: 'fdsd', title: 'Why is the sky blue?' },
-        { id: 'adsf', title: 'Who invented pizza?' },
-        { id: 'afdsf', title: 'Is green tea overrated?' },
-    ],
-      dispalyMealList:false
+    //   mealList:[
+    //     { id: 'fdsd', title: 'Why is the sky blue?' },
+    //     { id: 'adsf', title: 'Who invented pizza?' },
+    //     { id: 'afdsf', title: 'Is green tea overrated?' },
+    // ],
+      dispalyMealList:false,
+      meals:[]
     }
     this.showMealList = this.showMealList.bind(this);
   }
@@ -32,42 +33,23 @@ class Food extends React.Component{
   }
 
 
-  // sendPriceToServer(e) {
-  //   var obj = {
-  //     price: this.state.Price
-  //   }
-  //       var that=this;
+  sendPriceToServer(e) {
+    var obj = {
+          price: this.state.Price
+        }
+    fetch('/price', {
+      method: 'post',
+      headers:{"Content-Type" : "application/json"},
+      body: JSON.stringify(obj)
+    }).then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      console.log( data);
+      this.setState({meals:data.meals})
+    });
+  }
+  
 
-  //       $.ajax({
-  //         method: "POST",
-  //         data: {
-  //           obj
-  //   },
-  //         url: 'http://127.0.0.1:3000/price', 
-  //         dataType: "application/json",
-    
-  //         success: (data) => {
-  //           that.setState({
-  //             items: data
-  //           })
-  //         },
-  //         error: (err) => {
-  //           console.log('err', err);
-  //         }
-  //       });
-  //     } 
-    sendPriceToServer(){
-
-     const body= {price:this.state.Price};
-     fetch('http://127.0.0.1:3000/price', {
-       method:'post',
-       body:JSON.stringify(body),
-       headers:{"Content-Type" : "application/json"}
-       
-     })
-
-
-    }
     render(){
         return(
       <BrowserRouter>      
@@ -86,9 +68,10 @@ class Food extends React.Component{
 
       {/* <button className="search" 
       onClick={this.sendPriceToServer.bind(this) }   >Search</button> */}
-        <button onClick={this.showMealList}>Search</button>
+        <button className="search" 
+        onClick={this.showMealList}>Search</button>
         {this.state.dispalyMealList ?
-           <MealsList /> :
+           <MealsList meals={this.state.meals}/> :
            null
         }
       </form>

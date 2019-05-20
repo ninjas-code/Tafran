@@ -13,8 +13,15 @@ import Navgation from './components/Nav.jsx';
 
 
 class App extends React.Component {
-   /* <Route path="/test" component={test} />
-    <Route path="/test1" component={Food} />*/ 
+  
+//   state = {
+//     questions: [
+//        { id: 'fdsd', title: 'Why is the sky blue?' },
+//        { id: 'adsf', title: 'Who invented pizza?' },
+//        { id: 'afdsf', title: 'Is green tea overrated?' },
+//     ],
+//        displayQuestions: false
+// }
     
 render(){
   return (
@@ -23,7 +30,7 @@ render(){
     <div className="App">
       
       
-    <Navgation></Navgation>
+    0
 
     {/* <MealsList meals ={[{name:'meal1',price:2},{name:'meal2',price:4},{name:'meal3',price:3},{name:'meal4',price:5}]}/> */}
       
