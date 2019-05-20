@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import $ from 'jquery'; 
+import MealsList from './mealsList';
 
 class Food extends React.Component{
   constructor(props) {
@@ -71,7 +72,7 @@ class Food extends React.Component{
       name="price"/>
 
       <button className="search" 
-      onClick={this.sendPriceToServer.bind(this)} >Search</button>
+      onClick={this.sendPriceToServer.bind(this) }  >Search</button>
       </form>
      </header>
   
