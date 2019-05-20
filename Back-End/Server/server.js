@@ -99,7 +99,7 @@ app.get("/getUsers",(req,res)=>{
     console.log(result);
   //   var x = res.json(result)
   //  x.stringify();
-    res.send(result)
+   res.json(result)
 
 
   });

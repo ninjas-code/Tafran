@@ -6,7 +6,7 @@ import { userInfo } from 'os';
 
 // var APP = React.createClass();
 
-var x = [1,2,3,4,5]
+var x = [];
 // Don't Touch this /Qusai/
 const url = "http://localhost:5000/"; 
 fetch(url)
@@ -84,10 +84,10 @@ class Food extends React.Component{
       // async
        componentDidMount(){
         fetch('/getUsers')
-        .then(res => res.text())
+        // to make it wor just change the json to text /Qusai/
+        .then(res => res.json())
         .then(res => this.setState({apiResponse:res}))
         .catch(err => err);
-        
         ///////////////////////////////////////////////////
         // const url = "http://localhost:5000/getUsers";
         // const respon = await fetch(url);
@@ -113,13 +113,14 @@ class Food extends React.Component{
     <header className="App-header">
       {/* { {this.Name.map(this.showUsers)} } */}
 
-      {console.log(x.map(function(e){console.log(e)}))}
+      {/* {console.log(x.map(function(e){console.log(e)}))} */}
       {this.state.loading || !this.state.Name ? (
     <div> <img className="lodding" src="https://cdn.dribbble.com/users/807926/screenshots/3629667/loadingtwo.gif"/></div> ):(
      <div>{this.state.Name}</div>
      )}
       <form method="POST">
-        <p>This is coming from the data base {this.state.apiResponse}</p>
+        {/* This line is still under development Plese Don't Change any thing /Qusai/ */}
+        <p>This is coming from the data base {Object.values(this.state.apiResponse)}</p>
         {/* {this.state.apiResponse.map(function(ele){
           return(
             <div>
