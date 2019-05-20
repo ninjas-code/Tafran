@@ -6,7 +6,7 @@ import { userInfo } from 'os';
 
 // var APP = React.createClass();
 
-
+var x = [1,2,3,4,5]
 // Don't Touch this /Qusai/
 const url = "http://localhost:5000/"; 
 fetch(url)
@@ -71,14 +71,15 @@ class Food extends React.Component{
       // to updata the user info and put it in the front end // Qusai
       TheInfo=()=>{
         this.setState({
-          apiResponse:'',
-          id:this.state.id,
-          Name:this.state.Name,
-          address:this.state.address,
-          Food:this.state.Food,
-          Phonenumber:this.state.Phonenumber
+          apiResponse:"",
+          // id:this.state.id,
+          // Name:this.state.Name,
+          // address:this.state.address,
+          // Food:this.state.Food,
+          // Phonenumber:this.state.Phonenumber
         })
       }
+      
       // headers.append('Access-Cntrol-Allow-Origin','http://localhost:3000');
       // async
        componentDidMount(){
@@ -100,13 +101,8 @@ class Food extends React.Component{
       };
       componentWillMount(){
         this.componentDidMount();
-      }
+      };
 
-
-
-      
-
-    
 
       
     render(){
@@ -116,13 +112,21 @@ class Food extends React.Component{
     
     <header className="App-header">
       {/* { {this.Name.map(this.showUsers)} } */}
-      {console.log(this.state.users)}
+
+      {console.log(x.map(function(e){console.log(e)}))}
       {this.state.loading || !this.state.Name ? (
     <div> <img className="lodding" src="https://cdn.dribbble.com/users/807926/screenshots/3629667/loadingtwo.gif"/></div> ):(
      <div>{this.state.Name}</div>
      )}
       <form method="POST">
         <p>This is coming from the data base {this.state.apiResponse}</p>
+        {/* {this.state.apiResponse.map(function(ele){
+          return(
+            <div>
+            <h1>{ele.Name}</h1>
+            </div>
+          )
+        })} */}
       <h1 className="title">Put the Price</h1>
       <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="id"/>
       <button className="button" onClick={this.sendPriceToServer.bind(this)} >EAT</button>
