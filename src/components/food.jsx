@@ -60,8 +60,7 @@ class Food extends React.Component{
     <div className="App">
     
     <header className="App-header">
-      {/* <button>SXHOW/HIDE</button> */}
-
+     
       <form method="POST">
       
       
