@@ -32,15 +32,30 @@
     transform: rotate(360deg);
   }
 }
-input.Input {
-  padding: 25px;
+/* input.input {
+  padding: 5%;
   width: 66%;
-  font-size: 25px;
+  font-size: 25%;
+  text-align: center;
+} */
+input.input{
+  width: 130px;
+  border: none;
+  outline: none;
+  cursor:pointer;
+  border-radius: 5%;
+  padding: 10% 25%;
   text-align: center;
 }
 button.button {
-  padding: 25px;
-  margin: 10px;
-  width: 36%;
-  font-size: 30px;
+  background: red;
+  padding: 10%;
+  /* margin: */
+  /* width: 36%; */
+  width: 130%;
+  border: none;
+  outline: none;
+  cursor:pointer;
+  font-size: 30%;
+  text-align: center;
 }
