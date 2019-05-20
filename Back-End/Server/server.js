@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
-const PORT = 3001;
+const router = express.Router();
+const PORT = 5000;
 const bodyparser = require('body-parser')
 const mysql = require('mysql');
 const path = require('path');
 const pino = require('express-pino-logger');
 const Core = require('cors');
+// const JSON = require('circular-json');
 app.use(Core());
 // Add headers
 app.use("http://localhost:3000/",function (req, res, next) {
@@ -33,7 +35,6 @@ const connection = mysql.createConnection({
     password:"1111",
    database: 'restaurants'
 });
-// app.use(pino)
 
 // Create DB
 app.get("/CRDATA",(req,res)=>{
@@ -91,10 +92,13 @@ app.get("/CRTable",(req,res)=>{
 // Search Into the database   and appear all the data
 app.get("/getUsers",(req,res)=>{
   let serchItem = 'SELECT * FROM restaurants';
- connection.query(serchItem,(err,result)=>{
+ connection.query(serchItem,(err,result,next)=>{
     if(err) throw err;
     console.log(result);
-    res.send("This all the users")
+  //   var x = res.json(result)
+  //  x.stringify();
+    res.send(result)
+
 
   });
 });
@@ -128,10 +132,26 @@ connection.connect((err)=>{
 app.use(express.static('public'))
 
 // app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
-app.get('/',(req,res) => res.send({hello:'React'}) );
+// To Send the requstes the to FrontEnd
+
+// app.post('/')
+router.get('/',(req,res,nxt)=>{
+  res.json([{
+    id:1 , 
+    usernname:"Qusai"
+  },{
+    id:2,
+    UserName:"James"
+  }
+]);
+});
+app.get('/TE',(req,res) => res.json({Second:"The Second GEt"}) );
+app.post('/Q',(res,req) => req.json({Hi:"POST"}) );
 
 
 //app.get('/',(res,req) => res.sendfile('index.html'));
 
-
+app.get('/',(req,res,next) => res.json({Start:"The First Get"}) );
+  
+module.exports = router;
 app.listen(PORT, () => console.log("The Server is working on "+PORT));
