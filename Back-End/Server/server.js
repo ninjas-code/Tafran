@@ -7,8 +7,10 @@ const mysql = require('mysql');
 const path = require('path');
 const pino = require('express-pino-logger');
 const Core = require('cors');
+const testAPIRouter = require("./testAPI.js")
 // const JSON = require('circular-json');
 app.use(Core());
+app.use("/testAPP",testAPIRouter)
 // Add headers
 app.use("http://localhost:3000/",function (req, res, next) {
 

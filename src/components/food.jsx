@@ -8,7 +8,7 @@ import { userInfo } from 'os';
 
 
 // Don't Touch this /Qusai/
-const url = "http://localhost:3001/"; 
+const url = "http://localhost:5000/"; 
 fetch(url)
 .then(response => response.text())
 .then(contents => console.log(contents))
@@ -60,7 +60,7 @@ class Food extends React.Component{
       // The User info Get it from the data base // Qusai
       state={
         loading:true,
-        user:[],
+        users:[],
         id:"",
         Name:"",
         address:"",
@@ -71,6 +71,7 @@ class Food extends React.Component{
       // to updata the user info and put it in the front end // Qusai
       TheInfo=()=>{
         this.setState({
+          apiResponse:'',
           id:this.state.id,
           Name:this.state.Name,
           address:this.state.address,
@@ -79,22 +80,27 @@ class Food extends React.Component{
         })
       }
       // headers.append('Access-Cntrol-Allow-Origin','http://localhost:3000');
-      async componentDidMount(){
-        fetch('getUsers')
-        .then(res => res.json())
-        .then(user => this.setState({user}))
-
+      // async
+       componentDidMount(){
+        fetch('/getUsers')
+        .then(res => res.text())
+        .then(res => this.setState({apiResponse:res}))
+        .catch(err => err);
+        
         ///////////////////////////////////////////////////
-        const url = "http://localhost:5000/getUsers";
-        const respon = await fetch(url);
-        const data = await respon.json();
-        this.setState({Name:data.results,loading:false})
+        // const url = "http://localhost:5000/getUsers";
+        // const respon = await fetch(url);
+        // const data = await respon.json();
+        // this.setState({Name:data.results,loading:false})
 
         /////////////////////////////////////////////////////////
         // fetch('http://localhost:3001/')
         // .then(resopn=>console.log(resopn))
         // .then(({response})=>this.setState({Name:"response.Name"}))
       };
+      componentWillMount(){
+        this.componentDidMount();
+      }
 
 
 
@@ -110,14 +116,13 @@ class Food extends React.Component{
     
     <header className="App-header">
       {/* { {this.Name.map(this.showUsers)} } */}
-        {this.state.user.map(user =>
-        user.name
-        )} }
+      {console.log(this.state.users)}
       {this.state.loading || !this.state.Name ? (
     <div> <img className="lodding" src="https://cdn.dribbble.com/users/807926/screenshots/3629667/loadingtwo.gif"/></div> ):(
      <div>{this.state.Name}</div>
      )}
       <form method="POST">
+        <p>This is coming from the data base {this.state.apiResponse}</p>
       <h1 className="title">Put the Price</h1>
       <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="id"/>
       <button className="button" onClick={this.sendPriceToServer.bind(this)} >EAT</button>
