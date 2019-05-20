@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter , Route} from 'react-router-dom';
 import $ from 'jquery'; 
+import "../App.css"
 
 
-
-const url = "http://localhost:3001/"; // site that doesn’t send Access-Control-*
+// Don't Touch this /Qusai/
+const url = "http://localhost:3001/"; 
 fetch(url)
 .then(response => response.text())
 .then(contents => console.log(contents))
@@ -59,15 +60,7 @@ class Food extends React.Component{
 
       
 
-      // state={
-      //   loading:true
-      // };
-      // async componentDidMount(){
-      //   const url = "https://api.randomuser.me/";
-      //   const respon = await fetch(url);
-      //   const data = await respon.json();
-      //   console.log(data);
-      // }
+    
 
       state={
         loading:true,
@@ -79,19 +72,19 @@ class Food extends React.Component{
         const respon = await fetch(url);
         const data = await respon.json();
         this.setState({name:data.results[0],loading:false})
-      };
+      }
 
     render(){
         return(
       <BrowserRouter>      
     <div className="App">
-    {this.state.loading || !this.state.name ? (
-    <div> loading... </div> ):(
+    
+    <header className="App-header">
+      {/* <button>SHOW/HIDE</button> */}
+      {this.state.loading || !this.state.name ? (
+    <div> <img className="lodding" src="https://cdn.dribbble.com/users/807926/screenshots/3629667/loadingtwo.gif"/>loading... </div> ):(
      <div>{this.state.name.name.first}</div>
      )}
-    <header className="App-header">
-      <button>SHOW/HIDE</button>
-
       <form method="POST">
       <h1 className="title">Put the Price</h1>
       <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="id"/>

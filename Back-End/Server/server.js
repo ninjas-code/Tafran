@@ -8,7 +8,7 @@ const pino = require('express-pino-logger');
 const Core = require('cors');
 app.use(Core());
 // Add headers
-app.use(function (req, res, next) {
+app.use("http://localhost:3000/",function (req, res, next) {
 
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -127,8 +127,8 @@ connection.connect((err)=>{
 // THE SERVER
 app.use(express.static('public'))
 
-app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
-
+// app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
+app.get('/',(req,res) => res.send({hello:'React'}) );
 
 
 //app.get('/',(res,req) => res.sendfile('index.html'));
