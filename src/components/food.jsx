@@ -1,15 +1,30 @@
 import React from 'react';
-import { BrowserRouter , Route} from 'react-router-dom';
-import $ from 'jquery'; 
+import { BrowserRouter  } from 'react-router-dom';
+
+import MealsList from './mealsList';
 
 class Food extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      Price: ''
+      Price: '',
+    //   mealList:[
+    //     { id: 'fdsd', title: 'Why is the sky blue?' },
+    //     { id: 'adsf', title: 'Who invented pizza?' },
+    //     { id: 'afdsf', title: 'Is green tea overrated?' },
+    // ],
+      dispalyMealList:false,
+      meals:[]
     }
+    this.showMealList = this.showMealList.bind(this);
   }
+  showMealList(){
+   this.setState({
+    dispalyMealList:true
+   });
 
+
+  }
   handelPriceChange(e) {
     this.setState({
       Price : e.target.value,
@@ -20,28 +35,20 @@ class Food extends React.Component{
 
   sendPriceToServer(e) {
     var obj = {
-      price: this.state.Price
-    }
-        var that=this;
-
-        $.ajax({
-          method: "POST",
-          data: {
-            obj
-    },
-          url: 'http://127.0.0.1:3000/price', 
-          dataType: "application/json",
-    
-          success: (data) => {
-            that.setState({
-              items: data
-            })
-          },
-          error: (err) => {
-            console.log('err', err);
-          }
-        });
-      } 
+          price: this.state.Price
+        }
+    fetch('/price', {
+      method: 'post',
+      headers:{"Content-Type" : "application/json"},
+      body: JSON.stringify(obj)
+    }).then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      console.log( data);
+      this.setState({meals:data.meals})
+    });
+  }
+  
 
     render(){
         return(
@@ -49,16 +56,28 @@ class Food extends React.Component{
     <div className="App">
     
     <header className="App-header">
-      <button>SXHOW/HIDE</button>
-
+     
       <form method="POST">
-      <h1 className="title">Put the Price</h1>
-      <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.Price} onChange={this.handelPriceChange.bind(this)} name="price"/>
-      <button className="button" onClick={this.sendPriceToServer.bind(this)} >EAT</button>
+      
+      
+      <input className="input" 
+      placeholder="Your Budget" 
+      value= {this.state.Price} 
+      onChange={this.handelPriceChange.bind(this)} 
+      name="price"/>
+
+      {/* <button className="search" 
+      onClick={this.sendPriceToServer.bind(this) }   >Search</button> */}
+        <button className="search" 
+        onClick={this.showMealList}>Search</button>
+        {this.state.dispalyMealList ?
+           <MealsList meals={this.state.meals}/> :
+           null
+        }
       </form>
-    </header>
+     </header>
   
-  </div>
+     </div>
   </BrowserRouter>
         )}
 };
