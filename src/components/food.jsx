@@ -7,7 +7,13 @@ class Food extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      Price: ''
+      Price: '',
+      mealList:[
+        { id: 'fdsd', title: 'Why is the sky blue?' },
+        { id: 'adsf', title: 'Who invented pizza?' },
+        { id: 'afdsf', title: 'Is green tea overrated?' },
+    ],
+      dispalyMealList:false
     }
   }
 
@@ -72,7 +78,7 @@ class Food extends React.Component{
       name="price"/>
 
       <button className="search" 
-      onClick={this.sendPriceToServer.bind(this) }  >Search</button>
+      onClick={this.sendPriceToServer.bind(this) }   >Search</button>
       </form>
      </header>
   
