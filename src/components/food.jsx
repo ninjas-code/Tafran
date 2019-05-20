@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter  , Button} from 'react-router-dom';
 import $ from 'jquery'; 
 import MealsList from './mealsList';
 
@@ -15,8 +15,15 @@ class Food extends React.Component{
     ],
       dispalyMealList:false
     }
+    this.showMealList = this.showMealList.bind(this);
   }
+  showMealList(){
+   this.setState({
+    dispalyMealList:true
+   });
 
+
+  }
   handelPriceChange(e) {
     this.setState({
       Price : e.target.value,
@@ -77,8 +84,13 @@ class Food extends React.Component{
       onChange={this.handelPriceChange.bind(this)} 
       name="price"/>
 
-      <button className="search" 
-      onClick={this.sendPriceToServer.bind(this) }   >Search</button>
+      {/* <button className="search" 
+      onClick={this.sendPriceToServer.bind(this) }   >Search</button> */}
+        <button onClick={this.showMealList}>Search</button>
+        {this.state.dispalyMealList ?
+           <MealsList /> :
+           null
+        }
       </form>
      </header>
   

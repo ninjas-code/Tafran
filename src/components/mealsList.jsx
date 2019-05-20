@@ -1,6 +1,6 @@
 // import FoodListEntry from './FoodListEntry.jsx';
 import React from 'react';
-import {browseRoute} from 'react-router-dom';
+import {browseRoute , map} from 'react-router-dom';
 
 class MealsList extends React.Component {
 
