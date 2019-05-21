@@ -4,89 +4,64 @@ const PORT = 3000;
 const bodyparser = require('body-parser')
 const mysql = require('mysql');
 const path = require('path');
+
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({
+  extended: true
+}));
+
 // to creare the connection
 const connection = mysql.createConnection({
     host : 'localhost',
     user:'root',
     password:"1234",
-   database: 'restaurants'
+   database: 'fdp'
 });
 
-// Create DB
-app.get("/CRDATA",(req,res)=>{
-  let sql = 'CREATE DATABASE if not exists restaurants'
-  connection.query(sql,(err,result)=>{
-    if(err){
-      throw err
-    };
-    console.log(result);
-    res.send("The Database was created successfully")
-    console.log("Data Base Created")
-    connection.end();
+// getting the price from frontEnd and send the meals back
+app.post('/getMealsByPrice',(req,res) =>{
+  const price =req.body.price;
+  
+    let serchItem = `SELECT  m.name as mealName,r.name as restName,mt.size, price
+    FROM restmealmenue rmm
+    Inner Join restaurants r on (rmm.RestId = r.Id)
+    Inner Join mealtype mt on (rmm.MealTypeId = mt.Id)
+    Inner Join meals m on (mt.MealId = m.Id)
+    Where price <= ` + price  
+    +` group by m.name, r.name, mt.size, price
+    order by m.name, r.name, mt.size, price`;
 
-  });
-});
-//create table inside DB
-app.get("/CRTable",(req,res)=>{
-
-  let CreateTable = `CREATE TABLE if not exists restaurants(
-   id int primary key AUTO_INCREMENT,
-   Name VARCHAR(255),
-   address VARCHAR(255),
-   Food VARCHAR(500),
-   Phonenumber int
-   )`
-    connection.query(CreateTable,(err,result)=>{
-      if(err) throw err;
-      console.log(result);
-      console.log("Table Was Created On Successfully")
-      res.send("Table Was Created")
-    })
-  });
-
-   // Create User Inside The Databasce /* TEST FOR ADMIN ACCOUNT*/
-  app.get("/CN",(req,res)=>{
-  let newRestaurant = {
-    Name:'KFC',
-    address:"Amman",
-    Food:"hamburger",
-    Phonenumber:'07757231'
-  };
-  const added = 'INSERT INTO restaurants SET ?'
-  connection.query(added,newRestaurant,(err,result)=>{
-    if(err) throw err;
-    console.log(result);
-    res.send("User Was Added")
-
-  })
-})
-
-// Search Into the database   and appear all the data
-app.get("/getUsers",(req,res)=>{
-  let serchItem = 'SELECT * FROM restaurants';
  connection.query(serchItem,(err,result)=>{
     if(err) throw err;
     console.log(result);
-    res.send("This all the users")
+    res.send(result)
 
-  });
+  })
+
 });
 
-// Search Into the database and appear all the data
-app.get("/getoneUser",(req,res)=>{
-  let serchItem = 'SELECT * FROM restaurants WHERE Name'
-  connection.query(serchItem,(err,result)=>{
+// getting the meal from frondEnd and send the restauransts back 
+app.post('/getRest',(req,res) =>{
+  const mealName =req.body.name;
+  const price =req.body.price;
+  
+    let serchItem = `SELECT r.name as restName,phone,address, m.name as mealName,mt.size, price
+    FROM restmealmenue rmm
+    Inner Join restaurants r on (rmm.RestId = r.Id)
+    Inner Join mealtype mt on (rmm.MealTypeId = mt.Id)
+    Inner Join meals m on (mt.MealId = m.Id)
+    Where price <= ` + price  + ` and m.name = N'` + mealName 
+    + `' group by m.name, r.name, mt.size, price
+    order by m.name, r.name, mt.size, price`;
+
+ connection.query(serchItem,(err,result)=>{
     if(err) throw err;
-    console.log(result);
-    res.send("this the User")
+    console.log(result); 
+    res.send(result)
 
-  });
+  })
+
 });
-
-
-
-
-
 
 // The connection made
 connection.connect((err)=>{
@@ -96,15 +71,7 @@ connection.connect((err)=>{
   console.log("The Conection made Successfully");
 });
 
-
 // THE SERVER
 app.use(express.static('public'))
-
-app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../src",'index.js')));
-
-
-
-//app.get('/',(res,req) => res.sendfile('index.html'));
-
 
 app.listen(PORT, () => console.log("The Server is working on "+PORT));
