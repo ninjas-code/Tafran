@@ -83,9 +83,9 @@ class Food extends React.Component{
       // headers.append('Access-Cntrol-Allow-Origin','http://localhost:3000');
       // async
        componentDidMount(){
-        fetch('/getUsers')
+        fetch('/getoneUser')
         // to make it wor just change the json to text /Qusai/
-        .then(res => res.json())
+        .then(res => res.text())
         .then(res => this.setState({apiResponse:res}))
         .catch(err => err);
         ///////////////////////////////////////////////////
@@ -118,9 +118,11 @@ class Food extends React.Component{
     <div> <img className="lodding" src="https://cdn.dribbble.com/users/807926/screenshots/3629667/loadingtwo.gif"/></div> ):(
      <div>{this.state.Name}</div>
      )}
-      <form method="POST">
+      <form>
+        {x.push(this.state.apiResponse)}
+        {console.log(x)}
         {/* This line is still under development Plese Don't Change any thing /Qusai/ */}
-        <p>This is coming from the data base {Object.values(this.state.apiResponse)}</p>
+        <p>This is coming from the data base {this.state.apiResponse}</p>
         {/* {this.state.apiResponse.map(function(ele){
           return(
             <div>

@@ -107,11 +107,15 @@ app.get("/getUsers",(req,res)=>{
 
 // Search Into the database and appear all the data
 app.get("/getoneUser",(req,res)=>{
-  let serchItem = 'SELECT * FROM restaurants WHERE Name'
+  let serchItem = `
+  SELECT * 
+  FROM restaurants 
+  WHERE id = 2
+  `
   connection.query(serchItem,(err,result)=>{
     if(err) throw err;
     console.log(result);
-    res.send("this the User")
+    res.send(result)
 
   });
 });
