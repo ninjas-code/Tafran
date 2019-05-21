@@ -13,7 +13,7 @@ app.use(Core()); // to solve the Proxy Problem
 
 app.use("/testAPP",testAPIRouter) // To Conact the Router to the server
 
-/*This the Solve the access to the server problem - qusai*/ 
+/*This Solve the access to the server problem - qusai*/ 
 app.use("http://localhost:3000/",function (req, res, next) {
 
 
@@ -126,17 +126,17 @@ app.get("/CRTable",(req,res)=>{
 })
 
 // Search Into the database   and appear all the data /Qusai/
+var users =[];
 app.get("/getUsers",(req,res)=>{
-  let serchItem = 'SELECT * FROM fdp';
+  let serchItem = 'SELECT * FROM meals';
  connection.query(serchItem,(err,result,next)=>{
     if(err) throw err;
-    console.log(result);
-  //   var x = res.json(result)
-  //  x.stringify();
-   res.json(result)
-
-
-  });
+    result.forEach(function(row){
+      users.push(row.name);
+    })
+    console.log(users)
+    res.json(users)
+    });
 });
 
 // Search Into the database and appear all the data / Qusai/
@@ -175,7 +175,7 @@ app.use(express.static('public'))
 // To Send the requstes the to FrontEnd
 
 // app.post('/')
-router.get('/',(req,res,nxt)=>{
+router.get('/UU',(req,res,nxt)=>{
   res.json([{
     id:1 , 
     usernname:"Qusai"

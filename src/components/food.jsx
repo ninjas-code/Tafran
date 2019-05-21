@@ -4,9 +4,6 @@ import $ from 'jquery';
 import "../App.css"
 import { userInfo } from 'os';
 
-// var APP = React.createClass();
-
-var x = [];
 // Don't Touch this /Qusai/
 const url = "http://localhost:5000/"; 
 fetch(url)
@@ -14,7 +11,10 @@ fetch(url)
 .then(contents => console.log(contents))
 .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Food extends React.Component{
   constructor(props) {
@@ -31,73 +31,41 @@ class Food extends React.Component{
     console.log(this.state.id);
   }
 
-
-  sendPriceToServer(e) {
-    var obj = {
-      id: this.state.id
-    }
-        var that=this;
-
-        $.ajax({
-          method: "POST",
-          data: {
-          id: this.state.id
-    },
-          url: 'localhost:3000/price', 
-          dataType: "application/json",
-    
-          success: (data) => {
-            that.setState({
-              items: data,
-              personr:null
-            })
-          },
-          error: (err) => {
-            console.log('err', err);
-          }
-        });
-      } 
-      // The User info Get it from the data base // Qusai
+ // The User info Get it from the data base // Qusai
       state={
+        error:null,
         loading:true,
         users:[],
-        id:"",
-        Name:"",
-        address:"",
-        Food:"",
-        Phonenumber:""
+        apiResponse:[]
+        
 
       };
       // to updata the user info and put it in the front end // Qusai
       TheInfo=()=>{
         this.setState({
-          apiResponse:"",
-          // id:this.state.id,
-          // Name:this.state.Name,
-          // address:this.state.address,
-          // Food:this.state.Food,
-          // Phonenumber:this.state.Phonenumber
+          apriResponse:[],
         })
       }
       
       // headers.append('Access-Cntrol-Allow-Origin','http://localhost:3000');
       // async
        componentDidMount(){
-        fetch('/getoneUser')
+        fetch('/getUsers',{
+        method:"GET",
+        mode:'cors',
+        cache:'no-cache',
+        credentials:'same-origin',
+        headers:{
+          'Content-Type':"application/json"
+        },
+        redirect:"follow",
+        referrer:"no-referrer",
+        body:JSON.stringify()
+        })
         // to make it wor just change the json to text /Qusai/
         .then(res => res.text())
         .then(res => this.setState({apiResponse:res}))
         .catch(err => err);
-        ///////////////////////////////////////////////////
-        // const url = "http://localhost:5000/getUsers";
-        // const respon = await fetch(url);
-        // const data = await respon.json();
-        // this.setState({Name:data.results,loading:false})
-
-        /////////////////////////////////////////////////////////
-        // fetch('http://localhost:3001/')
-        // .then(resopn=>console.log(resopn))
-        // .then(({response})=>this.setState({Name:"response.Name"}))
       };
       componentWillMount(){
         this.componentDidMount();
@@ -106,23 +74,26 @@ class Food extends React.Component{
 
       
     render(){
+      const {apiResponse,error}=this.state;
+      if(error){
+        return <div>{error.message}</div>
+      }
         return(
       <BrowserRouter>      
     <div className="App">
     
     <header className="App-header">
-      {/* { {this.Name.map(this.showUsers)} } */}
-
-      {/* {console.log(x.map(function(e){console.log(e)}))} */}
+      {console.log(apiResponse)}
       {this.state.loading || !this.state.Name ? (
     <div> <img className="lodding" src="https://cdn.dribbble.com/users/807926/screenshots/3629667/loadingtwo.gif"/></div> ):(
      <div>{this.state.Name}</div>
      )}
       <form>
-        <p>This is coming from the data base {this.state.apiResponse}</p>
+        <p>This is coming from the data base {apiResponse}</p>
       <h1 className="title">Put the Price</h1>
       <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="id"/>
-      <button className="button" onClick={this.sendPriceToServer.bind(this)} >EAT</button>
+      <button className="button">EAT</button>
+      {/* onClick={this.sendPriceToServer.bind(this)} */}
       </form>
     </header>
   
