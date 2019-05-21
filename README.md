@@ -1,8 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## The Secripts
 
 In the project directory, you can run:
+you need to npm install the flowing code 
+express
+cors
+express-router
+mysql2
+nodemon
+react-dom
+web-packs
 
 ### `npm start`
 
