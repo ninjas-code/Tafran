@@ -16,19 +16,43 @@ fetch(url)
 
 
 
+
 class Food extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      id: ''
+   
+      Price: '',
+    //   mealList:[
+    //     { id: 'fdsd', title: 'Why is the sky blue?' },
+    //     { id: 'adsf', title: 'Who invented pizza?' },
+    //     { id: 'afdsf', title: 'Is green tea overrated?' },
+    // ],
+      dispalyMealList:false,
+      meals:[],
+      isHidden: true
     }
+    // this.showMealList = this.showMealList.bind(this);
   }
+  // showMealList(){
+  //  this.setState({
+  //   dispalyMealList:true
+  //  });
+
+
+  // }
 
   handelPriceChange(e) {
     this.setState({
       id : e.target.value,
     });
     console.log(this.state.id);
+  }
+
+  toggleHidden () {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
   }
 
 
@@ -103,6 +127,23 @@ class Food extends React.Component{
         this.componentDidMount();
       };
 
+=======
+          price: this.state.Price
+        }
+
+
+    fetch('/getMealsByPrice', {
+      method: 'post',
+      headers:{"Content-Type" : "application/json"},
+      body: JSON.stringify(obj)
+    }).then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      console.log( data);
+      this.setState({meals:data.meals})
+    });
+  }
+  
 
       
     render(){
@@ -111,24 +152,59 @@ class Food extends React.Component{
     <div className="App">
     
     <header className="App-header">
-      {/* { {this.Name.map(this.showUsers)} } */}
 
-      {/* {console.log(x.map(function(e){console.log(e)}))} */}
-      {this.state.loading || !this.state.Name ? (
-    <div> <img className="lodding" src="https://cdn.dribbble.com/users/807926/screenshots/3629667/loadingtwo.gif"/></div> ):(
-     <div>{this.state.Name}</div>
-     )}
+     
       <form>
-        <p>This is coming from the data base {this.state.apiResponse}</p>
-      <h1 className="title">Put the Price</h1>
-      <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="id"/>
-      <button className="button" onClick={this.sendPriceToServer.bind(this)} >EAT</button>
+      
+      
+      <input className="input" 
+      placeholder="Your Budget" 
+      value= {this.state.Price} 
+      onChange={this.handelPriceChange.bind(this)} 
+      name="price" required />   <br></br>
+    
+      <button className="search" 
+      onClick={this.sendPriceToServer.bind(this) } onClick={this.toggleHidden.bind(this)}   type="submit">submit your budjet</button><br></br>
+        
+        {!this.state.isHidden && <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} />}
+        {/* {this.state.dispalyMealList ?
+            <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} /*meals={this.state.meals}*/ 
+         // null
+        }  
       </form>
-    </header>
+     </header>
   
-  </div>
+     </div>
   </BrowserRouter>
         )}
 };
+
+class MealsList extends React.Component {
+
+  render(props){
+    
+      return(
+          <div>{
+            this.props.meals.length > 0 ?
+              
+              <ul>
+              {
+                this.props.meals.map(meal=>{
+                  return <li onClick={()=>alert(meal.name)}>
+                {meal.name} { " the price : "} {meal.price}{'$'}
+                </li> 
+                  })
+                }
+              {/* {props.items.map((item, index) => (
+                <il key={index} item={item} />
+              ))} */}
+              </ul>:null
+            
+        }
+          </div>
+      )
+    }
+  }
+
 
 export default Food;

@@ -1,3 +1,4 @@
+
 const express = require('express');
 const app = express();
 const router = express.Router();
@@ -31,6 +32,7 @@ app.use("http://localhost:3000/",function (req, res, next) {
 // Hi
   next();
 });
+
 
 
 app.use(bodyparser.json());
@@ -118,11 +120,29 @@ app.get("/CRTable",(req,res)=>{
   };
   const added = 'INSERT INTO restaurants SET ?'
   connection.query(added,newRestaurant,(err,result)=>{
+    password:"Raed1992",
+    database: 'fdp'
+});
+// getting the price from frontEnd and send the meals back
+app.get('/getMealsByPrice',(req,res) =>{
+  const price =req.body.price;
+  
+    let serchItem = `SELECT  m.name as mealName,r.name as restName,mt.size, price
+    FROM restmealmenue rmm
+    Inner Join restaurants r on (rmm.RestId = r.Id)
+    Inner Join mealtype mt on (rmm.MealTypeId = mt.Id)
+    Inner Join meals m on (mt.MealId = m.Id)
+    Where price <= ` + price  
+    +` group by m.name, r.name, mt.size, price
+    order by m.name, r.name, mt.size, price`;
+ connection.query(serchItem,(err,result)=>{
     if(err) throw err;
     console.log(result);
-    res.send("User Was Added")
-
+    res.send(result)
   })
+});
+app.get('/',(req,res)=>{
+  res.send("Hello")
 })
 
 // Search Into the database   and appear all the data /Qusai/
@@ -152,13 +172,27 @@ app.get("/getoneUser",(req,res)=>{
     res.send(result)
 
   });
+
+
+// getting the meal from frondEnd and send the restauransts back 
+app.post('/getRest',(req,res) =>{
+  const mealName =req.body.name;
+  const price =req.body.price;
+  
+    let serchItem = `SELECT r.name as restName,phone,address, m.name as mealName,mt.size, price
+    FROM restmealmenue rmm
+    Inner Join restaurants r on (rmm.RestId = r.Id)
+    Inner Join mealtype mt on (rmm.MealTypeId = mt.Id)
+    Inner Join meals m on (mt.MealId = m.Id)
+    Where price <= ` + price  + ` and m.name = N'` + mealName 
+    + `' group by m.name, r.name, mt.size, price
+    order by m.name, r.name, mt.size, price`;
+ connection.query(serchItem,(err,result)=>{
+    if(err) throw err;
+    console.log(result); 
+    res.send(result)
+  })
 });
-
-
-
-
-
-
 // The connection made
 connection.connect((err)=>{
   if(err){
@@ -166,8 +200,6 @@ connection.connect((err)=>{
   }
   console.log("The Conection made Successfully");
 });
-
-
 // THE SERVER
 app.use(express.static('public'))
 
@@ -196,3 +228,4 @@ app.get('/',(req,res,next) => res.json({Start:"The First Get"}) );
 module.exports = router;
 app.listen(PORT, () => console.log("The Server is working on "+PORT));
 
+app.listen(PORT, () => console.log("The Server is working on "+PORT));
