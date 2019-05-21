@@ -66,8 +66,7 @@ class Food extends React.Component{
       onChange={this.handelPriceChange.bind(this)} 
       name="price"/>
 
-      {/* <button className="search" 
-      onClick={this.sendPriceToServer.bind(this) }   >Search</button> */}
+     
         <button className="search" 
         onClick={this.showMealList}>Search</button>
         {this.state.dispalyMealList ?

@@ -9,22 +9,19 @@ render(props){
 		return(
 				<div>{
 					this.props.meals.length > 0 ?
-						
 						<ul>
 						{
 							this.props.meals.map(meal=>{
-								return <li onClick={()=>alert(meal.name)}>
+							return <li onClick={()=>alert(meal.name)}>
 							{meal.name} { " the price : "} {meal.price}{'$'}
 							</li> 
 								})
 							}
-						{/* {props.items.map((item, index) => (
-							<il key={index} item={item} />
-						))} */}
+					
 						</ul>:null
 					
-			}
-				</div>
+			           }
+			 </div>
 		)
   }
 }

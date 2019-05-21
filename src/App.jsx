@@ -30,7 +30,7 @@ render(){
     <div className="App">
       
       
-    0
+ 
 
     {/* <MealsList meals ={[{name:'meal1',price:2},{name:'meal2',price:4},{name:'meal3',price:3},{name:'meal4',price:5}]}/> */}
       
