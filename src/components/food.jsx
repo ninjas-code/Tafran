@@ -103,3 +103,4 @@ class Food extends React.Component{
 };
 
 export default Food;
+
