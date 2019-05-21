@@ -74,10 +74,10 @@ class Food extends React.Component{
       placeholder="Your Budget" 
       value= {this.state.Price} 
       onChange={this.handelPriceChange.bind(this)} 
-      name="price"/><br></br>
-
+      name="price" required />   <br></br>
+    
       <button className="search" 
-      onClick={this.sendPriceToServer.bind(this) } onClick={this.toggleHidden.bind(this)}   type="button">submit your budjet</button><br></br>
+      onClick={this.sendPriceToServer.bind(this) } onClick={this.toggleHidden.bind(this)}   type="submit">submit your budjet</button><br></br>
         
         {!this.state.isHidden && <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} />}
         {/* {this.state.dispalyMealList ?
