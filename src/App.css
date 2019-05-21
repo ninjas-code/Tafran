@@ -1,23 +1,30 @@
 .App {
   text-align: center;
+  
+ 
 }
+
 
 .App-logo {
   
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
+  
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: url("./Background1.jpg");
+  background-size:contain;
+  background-position:top;
+  background: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(174, 177, 14);
 }
 
 .App-link {
@@ -32,15 +39,16 @@
     transform: rotate(360deg);
   }
 }
-input.Input {
-  padding: 25px;
+/* input.input {
+  padding: 5%;
   width: 66%;
-  font-size: 25px;
+  font-size: 25%;
   text-align: center;
+} */
+input.input{
+
+ 
 }
-button.button {
-  padding: 25px;
-  margin: 10px;
-  width: 36%;
-  font-size: 30px;
+button.search {
+ 
 }
