@@ -4,9 +4,6 @@ import $ from 'jquery';
 import "../App.css"
 import { userInfo } from 'os';
 
-// var APP = React.createClass();
-
-var x = [];
 // Don't Touch this /Qusai/
 const url = "http://localhost:5000/"; 
 fetch(url)
@@ -14,33 +11,18 @@ fetch(url)
 .then(contents => console.log(contents))
 .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
 
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Food extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-   
-      Price: '',
-    //   mealList:[
-    //     { id: 'fdsd', title: 'Why is the sky blue?' },
-    //     { id: 'adsf', title: 'Who invented pizza?' },
-    //     { id: 'afdsf', title: 'Is green tea overrated?' },
-    // ],
-      dispalyMealList:false,
-      meals:[],
-      isHidden: true
+      id: ''
     }
-    // this.showMealList = this.showMealList.bind(this);
   }
-  // showMealList(){
-  //  this.setState({
-  //   dispalyMealList:true
-  //  });
-
-
-  // }
 
   handelPriceChange(e) {
     this.setState({
@@ -49,162 +31,76 @@ class Food extends React.Component{
     console.log(this.state.id);
   }
 
-  toggleHidden () {
-    this.setState({
-      isHidden: !this.state.isHidden
-    })
-  }
-
-
-  sendPriceToServer(e) {
-    var obj = {
-      id: this.state.id
-    }
-        var that=this;
-
-        $.ajax({
-          method: "POST",
-          data: {
-          id: this.state.id
-    },
-          url: 'localhost:3000/price', 
-          dataType: "application/json",
-    
-          success: (data) => {
-            that.setState({
-              items: data,
-              personr:null
-            })
-          },
-          error: (err) => {
-            console.log('err', err);
-          }
-        });
-      } 
-      // The User info Get it from the data base // Qusai
+ // The User info Get it from the data base // Qusai
       state={
+        error:null,
         loading:true,
         users:[],
-        id:"",
-        Name:"",
-        address:"",
-        Food:"",
-        Phonenumber:""
+        apiResponse:[]
+        
 
       };
       // to updata the user info and put it in the front end // Qusai
       TheInfo=()=>{
         this.setState({
-          apiResponse:"",
-          // id:this.state.id,
-          // Name:this.state.Name,
-          // address:this.state.address,
-          // Food:this.state.Food,
-          // Phonenumber:this.state.Phonenumber
+          apriResponse:[],
         })
       }
       
       // headers.append('Access-Cntrol-Allow-Origin','http://localhost:3000');
       // async
        componentDidMount(){
-        fetch('/getoneUser')
+        fetch('/getUsers',{
+        method:"GET",
+        mode:'cors',
+        cache:'no-cache',
+        credentials:'same-origin',
+        headers:{
+          'Content-Type':"application/json"
+        },
+        redirect:"follow",
+        referrer:"no-referrer",
+        body:JSON.stringify()
+        })
         // to make it wor just change the json to text /Qusai/
         .then(res => res.text())
         .then(res => this.setState({apiResponse:res}))
         .catch(err => err);
-        ///////////////////////////////////////////////////
-        // const url = "http://localhost:5000/getUsers";
-        // const respon = await fetch(url);
-        // const data = await respon.json();
-        // this.setState({Name:data.results,loading:false})
-
-        /////////////////////////////////////////////////////////
-        // fetch('http://localhost:3001/')
-        // .then(resopn=>console.log(resopn))
-        // .then(({response})=>this.setState({Name:"response.Name"}))
       };
       componentWillMount(){
         this.componentDidMount();
       };
 
-=======
-          price: this.state.Price
-        }
-
-
-    fetch('/getMealsByPrice', {
-      method: 'post',
-      headers:{"Content-Type" : "application/json"},
-      body: JSON.stringify(obj)
-    }).then(function(response) {
-      return response.json();
-    }).then(function(data) {
-      console.log( data);
-      this.setState({meals:data.meals})
-    });
-  }
-  
 
       
     render(){
+      const {apiResponse,error}=this.state;
+      if(error){
+        return <div>{error.message}</div>
+      }
         return(
       <BrowserRouter>      
     <div className="App">
     
     <header className="App-header">
-
-     
+      {console.log(apiResponse)}
+      {this.state.loading || !this.state.Name ? (
+    <div> <img className="lodding" src="https://cdn.dribbble.com/users/807926/screenshots/3629667/loadingtwo.gif"/></div> ):(
+     <div>{this.state.Name}</div>
+     )}
       <form>
-      
-      
-      <input className="input" 
-      placeholder="Your Budget" 
-      value= {this.state.Price} 
-      onChange={this.handelPriceChange.bind(this)} 
-      name="price" required />   <br></br>
-    
-      <button className="search" 
-      onClick={this.sendPriceToServer.bind(this) } onClick={this.toggleHidden.bind(this)}   type="submit">submit your budjet</button><br></br>
-        
-        {!this.state.isHidden && <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} />}
-        {/* {this.state.dispalyMealList ?
-            <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} /*meals={this.state.meals}*/ 
-         // null
-        }  
+        <p>This is coming from the data base {apiResponse}</p>
+      <h1 className="title">Put the Price</h1>
+      <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="id"/>
+      <button className="button">EAT</button>
+      {/* onClick={this.sendPriceToServer.bind(this)} */}
       </form>
-     </header>
+    </header>
   
-     </div>
+  </div>
   </BrowserRouter>
         )}
 };
 
-class MealsList extends React.Component {
-
-  render(props){
-    
-      return(
-          <div>{
-            this.props.meals.length > 0 ?
-              
-              <ul>
-              {
-                this.props.meals.map(meal=>{
-                  return <li onClick={()=>alert(meal.name)}>
-                {meal.name} { " the price : "} {meal.price}{'$'}
-                </li> 
-                  })
-                }
-              {/* {props.items.map((item, index) => (
-                <il key={index} item={item} />
-              ))} */}
-              </ul>:null
-            
-        }
-          </div>
-      )
-    }
-  }
-
-
 export default Food;
+
