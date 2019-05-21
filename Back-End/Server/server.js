@@ -10,7 +10,9 @@ const Core = require('cors');
 const testAPIRouter = require("./testAPI.js")
 // const JSON = require('circular-json');
 app.use(Core()); // to solve the Proxy Problem
+
 app.use("/testAPP",testAPIRouter) // To Conact the Router to the server
+
 /*This the Solve the access to the server problem - qusai*/ 
 app.use("http://localhost:3000/",function (req, res, next) {
 
@@ -26,18 +28,51 @@ app.use("http://localhost:3000/",function (req, res, next) {
 
   res.setHeader('Access-Control-Allow-Credentials', true);
 
-  // Pass to next layer of middleware
+
   next();
 });
+
+
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({
+  extended: true
+}));
+
+
+
+
+
+// getting the meal from frondEnd and send the restauransts back 
+app.post('/getRest',(req,res) =>{
+  const mealName =req.body.name;
+  const price =req.body.price;
+  
+    let serchItem = `SELECT r.name as restName,phone,address, m.name as mealName,mt.size, price
+    FROM restmealmenue rmm
+    Inner Join restaurants r on (rmm.RestId = r.Id)
+    Inner Join mealtype mt on (rmm.MealTypeId = mt.Id)
+    Inner Join meals m on (mt.MealId = m.Id)
+    Where price <= ` + price  + ` and m.name = N'` + mealName 
+    + `' group by m.name, r.name, mt.size, price
+    order by m.name, r.name, mt.size, price`;
+ connection.query(serchItem,(err,result)=>{
+    if(err) throw err;
+    console.log(result); 
+    res.send(result)
+  })
+});
+
+
+
 // to creare the connection
 const connection = mysql.createConnection({
     host : 'localhost',
     user:'root',
     password:"1111",
-   database: 'restaurants'
+   database: 'fdp' // Change this to Your Data Base Name in Your My SQL Server - Qusai
 });
 
-// Create DB
+// Create DB - qusai
 app.get("/CRDATA",(req,res)=>{
   let sql = 'CREATE DATABASE if not exists restaurants'
   connection.query(sql,(err,result)=>{
@@ -90,9 +125,9 @@ app.get("/CRTable",(req,res)=>{
   })
 })
 
-// Search Into the database   and appear all the data
+// Search Into the database   and appear all the data /Qusai/
 app.get("/getUsers",(req,res)=>{
-  let serchItem = 'SELECT * FROM restaurants';
+  let serchItem = 'SELECT * FROM fdp';
  connection.query(serchItem,(err,result,next)=>{
     if(err) throw err;
     console.log(result);
@@ -104,7 +139,7 @@ app.get("/getUsers",(req,res)=>{
   });
 });
 
-// Search Into the database and appear all the data
+// Search Into the database and appear all the data / Qusai/
 app.get("/getoneUser",(req,res)=>{
   let serchItem = `
   SELECT * 

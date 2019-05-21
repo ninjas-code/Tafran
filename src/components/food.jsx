@@ -119,17 +119,7 @@ class Food extends React.Component{
      <div>{this.state.Name}</div>
      )}
       <form>
-        {x.push(this.state.apiResponse)}
-        {console.log(x)}
-        {/* This line is still under development Plese Don't Change any thing /Qusai/ */}
         <p>This is coming from the data base {this.state.apiResponse}</p>
-        {/* {this.state.apiResponse.map(function(ele){
-          return(
-            <div>
-            <h1>{ele.Name}</h1>
-            </div>
-          )
-        })} */}
       <h1 className="title">Put the Price</h1>
       <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="id"/>
       <button className="button" onClick={this.sendPriceToServer.bind(this)} >EAT</button>
