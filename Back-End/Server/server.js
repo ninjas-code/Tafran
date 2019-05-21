@@ -88,7 +88,7 @@ app.get("/CRDATA",(req,res)=>{
 });
 //create table inside DB
 app.get("/CRTable",(req,res)=>{
-
+// To Create Tables fotm the server
   let CreateTable = `CREATE TABLE if not exists restaurants(
    id int primary key AUTO_INCREMENT,
    Name VARCHAR(255),
