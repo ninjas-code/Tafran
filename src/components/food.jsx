@@ -1,14 +1,31 @@
 import React from 'react';
- import { BrowserRouter , Route} from 'react-router-dom';
-import $ from 'jquery'; 
+import { BrowserRouter, Route  } from 'react-router-dom';
+
+// import MealsList from './mealsList';
 
 class Food extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      Price: ''
+      Price: '',
+    //   mealList:[
+    //     { id: 'fdsd', title: 'Why is the sky blue?' },
+    //     { id: 'adsf', title: 'Who invented pizza?' },
+    //     { id: 'afdsf', title: 'Is green tea overrated?' },
+    // ],
+      dispalyMealList:false,
+      meals:[],
+      isHidden: true
     }
+    // this.showMealList = this.showMealList.bind(this);
   }
+  // showMealList(){
+  //  this.setState({
+  //   dispalyMealList:true
+  //  });
+
+
+  // }
 
   handelPriceChange(e) {
     this.setState({
@@ -17,31 +34,31 @@ class Food extends React.Component{
     console.log(this.state.Price);
   }
 
+  toggleHidden () {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
+
 
   sendPriceToServer(e) {
     var obj = {
-      price: this.state.Price
-    }
-        var that=this;
+          price: this.state.Price
+        }
 
-        $.ajax({
-          method: "POST",
-          data: {
-            obj
-    },
-          url: 'http://127.0.0.1:3000/price', 
-          dataType: "application/json",
-    
-          success: (data) => {
-            that.setState({
-              items: data
-            })
-          },
-          error: (err) => {
-            console.log('err', err);
-          }
-        });
-      } 
+
+    fetch('/getMealsByPrice', {
+      method: 'post',
+      headers:{"Content-Type" : "application/json"},
+      body: JSON.stringify(obj)
+    }).then(function(response) {
+      return response.json();
+    }).then(function(data) {
+      console.log( data);
+      this.setState({meals:data.meals})
+    });
+  }
+  
 
     render(){
         return(
@@ -49,18 +66,58 @@ class Food extends React.Component{
     <div className="App">
     
     <header className="App-header">
-      <button>SXHOW/HIDE</button>
+     
+      <form>
+      
+      
+      <input className="input" 
+      placeholder="Your Budget" 
+      value= {this.state.Price} 
+      onChange={this.handelPriceChange.bind(this)} 
+      name="price"/><br></br>
 
-      <form method="POST">
-      <h1 className="title">Put the Price</h1>
-      <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.Price} onChange={this.handelPriceChange.bind(this)} name="price"/>
-      <button className="button" onClick={this.sendPriceToServer.bind(this)} >EAT</button>
+      <button className="search" 
+      onClick={this.sendPriceToServer.bind(this) } onClick={this.toggleHidden.bind(this)}   type="button">submit your budjet</button><br></br>
+        
+        {!this.state.isHidden && <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} />}
+        {/* {this.state.dispalyMealList ?
+            <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} /*meals={this.state.meals}*/ 
+         // null
+        }  
       </form>
-    </header>
+     </header>
   
-  </div>
+     </div>
   </BrowserRouter>
         )}
 };
+
+class MealsList extends React.Component {
+
+  render(props){
+    
+      return(
+          <div>{
+            this.props.meals.length > 0 ?
+              
+              <ul>
+              {
+                this.props.meals.map(meal=>{
+                  return <li onClick={()=>alert(meal.name)}>
+                {meal.name} { " the price : "} {meal.price}{'$'}
+                </li> 
+                  })
+                }
+              {/* {props.items.map((item, index) => (
+                <il key={index} item={item} />
+              ))} */}
+              </ul>:null
+            
+        }
+          </div>
+      )
+    }
+  }
+
 
 export default Food;
