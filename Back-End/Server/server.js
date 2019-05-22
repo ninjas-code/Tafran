@@ -34,9 +34,9 @@ app.use("http://localhost:3000/",function (req, res, next) {
 
 
 app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({
-  extended: true
-}));
+// app.use(bodyparser.urlencoded({
+//   extended: true
+// }));
 
 
 
@@ -170,7 +170,12 @@ connection.connect((err)=>{
 
 // THE SERVER
 app.use(express.static('public'))
-
+var urlencodedParser = bodyparser.urlencoded({ extended: false })
+app.post("/Price",urlencodedParser,function(req,res){
+  if(!req.body) return res.sendStatus(400);
+  console.log(req.body.Price)
+  res.send("It Work")
+})
 // app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
 // To Send the requstes the to FrontEnd
 

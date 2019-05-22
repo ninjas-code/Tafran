@@ -95,8 +95,8 @@ class Food extends React.Component{
      )}
      <h1 className="title">Put the Price</h1>
 
-      <form>
-      <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)}  required/>
+      <form method="POST" action="/Price" >
+      <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="Price" required/>
       <button className="button"><NavLink to="/list">Hi</NavLink></button>
       {/* <p>This is coming from the data base {apiResponse}</p> */}
       {/* onClick={this.sendPriceToServer.bind(this)} */}
