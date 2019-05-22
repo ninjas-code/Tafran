@@ -9,9 +9,9 @@ const Navgation =() =>{
     return(
         <div>
         <div className="TheNav">
-        <NavLink className="Nav" to="/login">login as admin</NavLink> 
-       <NavLink  className="Nav" to="/meals">show meals</NavLink>
-       <NavLink  className="Nav" to="/resturant">Shwo Resturants</NavLink>
+        <NavLink className="Nav" to="/login"><i className="fas fa-user-circle"></i>login</NavLink> 
+       {/* <NavLink  className="Nav" to="/meals">show meals</NavLink>
+       <NavLink  className="Nav" to="/resturant">Shwo Resturants</NavLink> */}
        </div> 
        </div>
 

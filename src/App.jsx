@@ -7,6 +7,8 @@ import Food from './components/food.jsx';
 import Err from './components/404Page.jsx';
 import Navgation from './components/Nav.jsx';
 import Login from './components/login.jsx';
+import ThelistFood from './components/mealsList.jsx';
+
 
 
 
@@ -27,6 +29,7 @@ render(){
       <Switch>
       <Route path="/" component={Food} exact/>
       <Route path="/login" component={Login} exact/>
+      <Route path="/list" component={ThelistFood} exact/>
       <Route component={Err} exact/>
       </Switch>
 

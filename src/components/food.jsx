@@ -3,6 +3,7 @@ import { BrowserRouter , Route} from 'react-router-dom';
 import $ from 'jquery'; 
 import "../App.css"
 import { userInfo } from 'os';
+import mealsList from "./mealsList.jsx"
 
 // Don't Touch this /Qusai/
 const url = "http://localhost:5000/"; 
@@ -88,10 +89,11 @@ class Food extends React.Component{
     <div> <img className="lodding" src="https://cdn.dribbble.com/users/807926/screenshots/3629667/loadingtwo.gif"/></div> ):(
      <div>{this.state.Name}</div>
      )}
+     <h1 className="title">Put the Price</h1>
+
       <form>
-      <h1 className="title">Put the Price</h1>
       <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="id"/>
-      <button className="button">EAT</button>
+      <button className="button" onClick={mealsList} >EAT</button>
       {/* <p>This is coming from the data base {apiResponse}</p> */}
       {/* onClick={this.sendPriceToServer.bind(this)} */}
       </form>
