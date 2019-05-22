@@ -92,7 +92,7 @@ class Food extends React.Component{
       <h1 className="title">Put the Price</h1>
       <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="id"/>
       <button className="button">EAT</button>
-      <p>This is coming from the data base {apiResponse}</p>
+      {/* <p>This is coming from the data base {apiResponse}</p> */}
       {/* onClick={this.sendPriceToServer.bind(this)} */}
       </form>
     </header>

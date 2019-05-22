@@ -5,15 +5,17 @@
  
 }
 a.Nav {
-  color: #fff;
+  color: #000;
   font-size: 29px;
   text-decoration: none;
   /* float: left; */
   margin: 21px;
-  background: #f61700;
-  border: 1px solid #fff;
+  background: #ffb700;
+  border: 1px solid;
   border-radius: 1px 21px;
   padding: 12px;
+  font-family: 'Francois One', sans-serif;
+
 }
 .TheNav {
     height: 58px;
@@ -64,6 +66,9 @@ a.Nav {
  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
  sans-serif;
 }
+h1.title {
+  font-family: 'Francois One', sans-serif;
+}
 input.input{
 
  
@@ -74,10 +79,11 @@ button.button {
     width: 11%;
     font-size: 30px;
     border: 0.5px solid;
-    border-radius: 52px;
-    color: #fff;
+    border-radius: 17px;
+    color: #000;
   /* background: #3B2879;*/
-    background: #F61700;
+    background:#ffb700;
+    font-family: 'Francois One', sans-serif;
 }
 .lodding{
   max-width: 173px;
