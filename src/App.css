@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-image: url("./Background1.jpg");
+  /* background-image: url("./Background1.jpg"); */
   background-size:contain;
   background-position:top;
   background: cover;
@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(174, 177, 14);
+  color: rgb(38, 8, 146);
 }
 
 .App-link {
@@ -45,10 +45,7 @@
   font-size: 25%;
   text-align: center;
 } */
-input.input{
 
- 
-}
 button.button {
   padding: 25px;
   margin: 10px;
@@ -57,7 +54,4 @@ button.button {
 }
 .lodding{
   max-width: 350px;
-}
-button.search {
- 
 }
