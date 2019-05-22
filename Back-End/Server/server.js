@@ -187,7 +187,10 @@ app.post("/Price",urlencodedParser,function(req,res){
       console.log("The Name is of the Restrunt is ",row.name ,"and the price is ",row.id)
       }
     })
-    res.send("It Work")
+    res.writeHead(301,
+      {location:"http://localhost:3000/list"}
+      )
+      res.end();
 
     // console.log(users)
     //res.json(users)
