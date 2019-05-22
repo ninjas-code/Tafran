@@ -4,6 +4,10 @@ import $ from 'jquery';
 import "../App.css"
 import { userInfo } from 'os';
 import mealsList from "./mealsList.jsx"
+import {NavLink} from 'react-router-dom';
+import ThelistFood from './mealsList.jsx';
+
+
 
 // Don't Touch this /Qusai/
 const url = "http://localhost:5000/"; 
@@ -92,8 +96,8 @@ class Food extends React.Component{
      <h1 className="title">Put the Price</h1>
 
       <form>
-      <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="id"/>
-      <button className="button" onClick={mealsList} >EAT</button>
+      <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)}  required/>
+      <button className="button"><NavLink to="/list">Hi</NavLink></button>
       {/* <p>This is coming from the data base {apiResponse}</p> */}
       {/* onClick={this.sendPriceToServer.bind(this)} */}
       </form>

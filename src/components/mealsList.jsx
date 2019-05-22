@@ -38,7 +38,6 @@ fetch(url)
     
     <header className="App-header">
       <h1>HI From the List</h1>
-      <bottom className="backbutton" ><i class="fas fa-home"></i></bottom>
       <div className="FoodList">
       <h1>The List of Meals</h1>   
       <ul className="ulFood">  
