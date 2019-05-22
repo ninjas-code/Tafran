@@ -134,7 +134,7 @@ app.get("/getUsers",(req,res)=>{
     result.forEach(function(row){
       users.push(row.name);
     })
-    console.log(users)
+   // console.log(users)
     res.json(users)
     });
 });
@@ -174,7 +174,27 @@ var urlencodedParser = bodyparser.urlencoded({ extended: false })
 app.post("/Price",urlencodedParser,function(req,res){
   if(!req.body) return res.sendStatus(400);
   console.log(req.body.Price)
-  res.send("It Work")
+  
+  let serchItem = 'SELECT * FROM meals';
+  connection.query(serchItem,(err,result,next)=>{
+    if(err) throw err;
+    result.forEach(function(row){
+      if(row.id <= req.body.Price){
+     // console.log("Hello im if")
+      // console.log(row.id)
+      users.push(row.id);
+      // res.json(users)
+      console.log("The Name is of the Restrunt is ",row.name ,"and the price is ",row.id)
+      }
+    })
+    res.send("It Work")
+
+    // console.log(users)
+    //res.json(users)
+    });
+
+
+  // res.send("It Work")
 })
 // app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
 // To Send the requstes the to FrontEnd
