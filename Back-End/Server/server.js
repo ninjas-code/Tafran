@@ -23,7 +23,7 @@ app.use(function(req, res, next) {
 // getting the price from frontEnd and send the meals back
 app.post('/getMealsByPrice',(req,res) =>{
   const price =req.body.price;
-  console.log(price)
+  // console.log(price)
     let serchItem = `SELECT  m.name as mealName,r.name as restName,mt.size, price
     FROM restmealmenue rmm
     Inner Join restaurants r on (rmm.RestId = r.Id)
@@ -34,26 +34,27 @@ app.post('/getMealsByPrice',(req,res) =>{
     order by m.name, r.name, mt.size, price`;
  connection.query(serchItem,(err,result)=>{
     if(err) throw err;
-    console.log(result);
+    // console.log(result);
     res.send(result)
   })
 });
 // getting the meal from frondEnd and send the restauransts back 
 app.post('/getRest',(req,res) =>{
-  const mealName =req.body.name;
+  const mealName =req.body.restName;
   const price =req.body.price;
   
-    let serchItem = `SELECT r.name as restName,phone,address, m.name as mealName,mt.size, price
-    FROM restmealmenue rmm
-    Inner Join restaurants r on (rmm.RestId = r.Id)
-    Inner Join mealtype mt on (rmm.MealTypeId = mt.Id)
-    Inner Join meals m on (mt.MealId = m.Id)
-    Where price <= ` + price  + ` and m.name = N'` + mealName 
-    + `' group by m.name, r.name, mt.size, price
-    order by m.name, r.name, mt.size, price`;
- connection.query(serchItem,(err,result)=>{
+  let serchItem = `SELECT r.name as restName,phone,address, m.name as mealName,mt.size, price
+  FROM restmealmenue rmm
+  Inner Join restaurants r on (rmm.RestId = r.Id)
+  Inner Join mealtype mt on (rmm.MealTypeId = mt.Id)
+  Inner Join meals m on (mt.MealId = m.Id)
+  Where price <= ` + price  + ` and m.name = N'` + mealName 
+  + `' group by m.name, r.name, mt.size, price
+  order by m.name, r.name, mt.size, price`;
+  connection.query(serchItem,(err,result)=>{
     if(err) throw err;
     console.log(result); 
+    console.log(mealName,price)
     res.send(result)
   })
 });
