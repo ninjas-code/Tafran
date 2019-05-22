@@ -4,44 +4,41 @@ const router = express.Router();
 const PORT = 5000;
 const bodyparser = require('body-parser')
 const mysql = require('mysql');
-const path = require('path');
-const pino = require('express-pino-logger');
-const Core = require('cors');
-const testAPIRouter = require("./testAPI.js")
-// const JSON = require('circular-json');
-app.use(Core()); // to solve the Proxy Problem
-
-app.use("/testAPP",testAPIRouter) // To Conact the Router to the server
-
-/*This Solve the access to the server problem - qusai*/ 
-app.use("http://localhost:3000/",function (req, res, next) {
-
-
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-
-
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-
-  res.setHeader('Access-Control-Allow-Credentials', true);
-
-// Hi
-  next();
-});
-
-
+// const path = require('path');
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
   extended: true
 }));
-
-
-
-
-
+// to creare the connection
+const connection = mysql.createConnection({
+    host : 'localhost',
+    user:'root',
+    password:"Raed1992",
+   database: 'fdp'
+});
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+// getting the price from frontEnd and send the meals back
+app.post('/getMealsByPrice',(req,res) =>{
+  const price =req.body.price;
+  console.log(price)
+    let serchItem = `SELECT  m.name as mealName,r.name as restName,mt.size, price
+    FROM restmealmenue rmm
+    Inner Join restaurants r on (rmm.RestId = r.Id)
+    Inner Join mealtype mt on (rmm.MealTypeId = mt.Id)
+    Inner Join meals m on (mt.MealId = m.Id)
+    Where price <= ` + price  
+    +` group by m.name, r.name, mt.size, price
+    order by m.name, r.name, mt.size, price`;
+ connection.query(serchItem,(err,result)=>{
+    if(err) throw err;
+    console.log(result);
+    res.send(result)
+  })
+});
 // getting the meal from frondEnd and send the restauransts back 
 app.post('/getRest',(req,res) =>{
   const mealName =req.body.name;
