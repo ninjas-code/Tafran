@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter , Route,Link,Switch} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import $ from 'jquery'; 
 import "../App.css"
 import { userInfo } from 'os';
@@ -30,16 +30,15 @@ fetch(url)
                 break
             }
         }
+
       return(
       <BrowserRouter>  
-      ${text}
     
     <div className="App">
     
     <header className="App-header">
       <h1>HI From the List</h1>
       <bottom className="backbutton" ><i class="fas fa-home"></i></bottom>
-      <BrowserRouter className="Nav" to="/login"><i className="fas fa-user-circle"></i></BrowserRouter>
       <div className="FoodList">
       <h1>The List of Meals</h1>   
       <ul className="ulFood">  
