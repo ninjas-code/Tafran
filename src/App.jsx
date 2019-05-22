@@ -22,7 +22,7 @@ render(){
     <div className="App">
       
 
-      <Navgation></Navgation>
+      <Navgation className="TheNav"></Navgation>
     {/* <MealsList meals ={[{name:'meal1',price:2},{name:'meal2',price:4},{name:'meal3',price:3},{name:'meal4',price:5}]}/> */}
       <Switch>
       <Route path="/" component={Food} exact/>

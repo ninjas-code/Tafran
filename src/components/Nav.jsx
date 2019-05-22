@@ -8,9 +8,11 @@ const Navgation =() =>{
 
     return(
         <div>
-        <NavLink to="/login">login as admin</NavLink> <br></br>
-       <NavLink to="/meals">show meals</NavLink><br></br>
-       <NavLink to="/resturant">Shwo Resturants</NavLink><br></br>
+        <div className="TheNav">
+        <NavLink className="Nav" to="/login">login as admin</NavLink> 
+       <NavLink  className="Nav" to="/meals">show meals</NavLink>
+       <NavLink  className="Nav" to="/resturant">Shwo Resturants</NavLink>
+       </div> 
        </div>
 
 

@@ -60,7 +60,7 @@ class Food extends React.Component{
         },
         redirect:"follow",
         referrer:"no-referrer",
-        body:JSON.stringify()
+        body:JSON.stringify(this.state.apiResponse)
         })
         // to make it wor just change the json to text /Qusai/
         .then(res => res.text())
@@ -89,10 +89,10 @@ class Food extends React.Component{
      <div>{this.state.Name}</div>
      )}
       <form>
-        <p>This is coming from the data base {apiResponse}</p>
       <h1 className="title">Put the Price</h1>
       <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="id"/>
       <button className="button">EAT</button>
+      <p>This is coming from the data base {apiResponse}</p>
       {/* onClick={this.sendPriceToServer.bind(this)} */}
       </form>
     </header>
