@@ -30,6 +30,7 @@ class Food extends React.Component{
   }
 
   handelPriceChange(e) {
+    console.log(e)
     this.setState({
       id : e.target.value,
     });
@@ -97,8 +98,8 @@ class Food extends React.Component{
 
       <form method="POST" action="/Price" >
       <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="Price" required/>
-      <button className="button"><NavLink to="/list">Hi</NavLink></button>
-      {/* <p>This is coming from the data base {apiResponse}</p> */}
+      <button className="button">search</button>
+      <p>This is coming from the data base {apiResponse}</p>
       {/* onClick={this.sendPriceToServer.bind(this)} */}
       </form>
     </header>

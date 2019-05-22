@@ -140,6 +140,7 @@ h1.title {
     margin-bottom: 13px;
     background: #000;
     /* margin-right: 10px; */
+    font-size: 19px;
 
 }
 input.input{
@@ -164,4 +165,30 @@ button.button {
 }
 button.search {
  
+}
+.UserHeader {
+  background: #ffb700;
+  width: 400px;
+  margin: 0 auto;
+  border: 0.1px solid;
+  border-radius: 19px;
+    font-size: 19px;
+    padding: 30px;
+
+}
+input.UserInput {
+  padding: 20px;
+  font-size: 23px;
+}
+h1.UserTitles {
+  font-size: 19px;
+}
+button.ButtonLog {
+  margin: 50px;
+  padding: 3px;
+  width: 67%;
+  font-size: 31px;
+  font-family: 'Francois One', sans-serif;
+  border: 0.2px;
+  border-radius: 17px;
 }
