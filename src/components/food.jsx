@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter , Route} from 'react-router-dom';
-import $ from 'jquery'; 
+import { BrowserRouter } from 'react-router-dom';
+// import $ from 'jquery'; 
 import "../App.css"
-import { userInfo } from 'os';
+// import { userInfo } from 'os';
 
 // Don't Touch this /Qusai/
 const url = "http://localhost:5000/"; 
@@ -148,3 +148,4 @@ class MealsList extends React.Component {
 }
 
 
+export default Food;
