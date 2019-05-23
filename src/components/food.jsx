@@ -47,10 +47,7 @@ class Food extends React.Component {
   sendRestNameAndPrice(e, mealObj) {
     e.preventDefault();
 
-    // var body = {
-    //   price: this.state.Price,
-    //   name : this.state.Name
-    // }
+    
     console.log(mealObj);
 
     fetch('http://localhost:5000/getRest', {
@@ -88,7 +85,8 @@ class Food extends React.Component {
     }).then((data) => {
       console.log(data);
       this.setState({
-        meals: data,
+        meals:data,
+       
         dispalyMealList: true
       })
     });

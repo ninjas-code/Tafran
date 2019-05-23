@@ -11,11 +11,14 @@ app.use(bodyparser.urlencoded({
 }));
 // to creare the connection
 const connection = mysql.createConnection({
-    host : 'localhost',
-    user:'root',
-    password:"Raed1992",
-   database: 'fdp'
+    host : 'remotemysql.com/3306',
+    user:'oqcPRrlK7a',
+    password:'aa7uESrnng',
+   database: 'oqcPRrlK7a'
 });
+
+
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
