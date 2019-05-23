@@ -10,11 +10,15 @@ app.use(bodyparser.urlencoded({
   extended: true
 })); // Hi   dfasdfadfdf
 // to creare the connection
+
+
+
+
 const connection = mysql.createConnection({
     host : 'localhost',
     user:'root',
     password:"1111",
-   database: 'fdp'
+   database: 'users'
 });
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -72,7 +76,7 @@ app.post('/getRest',(req,res) =>{
 
 // Create DB - qusai
 app.get("/CRDATA",(req,res)=>{
-  let sql = 'CREATE DATABASE if not exists restaurants'
+  let sql = 'CREATE DATABASE if not exists Users'
   connection.query(sql,(err,result)=>{
     if(err){
       throw err
@@ -109,12 +113,14 @@ app.get("/CRTable",(req,res)=>{
    // Create User Inside The Databasce /* TEST FOR ADMIN ACCOUNT*/
   app.get("/CN",(req,res)=>{
   let newRestaurant = {
-    Name:'mac',
-    address:"Amman",
-    Food:"hamburger",
-    Phonenumber:'07757231'
+    Name:'Qusai',
+    password:"1111",
+    location:"Amman",
+    phonenumber:"07765489",
+    TheRestaurant:"YODu",
+    MealsandPrice:'Hummus 5$'
   };
-  const added = 'INSERT INTO restaurants SET ?'
+  const added = 'INSERT INTO usersInfo SET ?'
   connection.query(added,newRestaurant,(err,result)=>{
     if(err) throw err;
     console.log(result);
@@ -186,6 +192,13 @@ router.get('/UU',(req,res,nxt)=>{
 app.get('/TE',(req,res) => res.json({Second:"The Second GEt"}) );
 app.post('/Q',(res,req) => req.json({Hi:"POST"}) );
 
+//////////////////////////////////////// USER AREA//////////////////////////
+
+app.post('/registered', function(req, res) {
+res.redirect("http://localhost:3000/login")
+});  
+  
+  /////////////////////////////////////USER AREA ////////////////////////////////////////
 
 //app.get('/',(res,req) => res.sendfile('index.html'));
 

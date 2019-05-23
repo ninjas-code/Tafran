@@ -23,7 +23,7 @@ render(){
       <Navgation/>    
       <Route  path="/" component={Food} exact />
         <Route  path="/login" component={Login} exact /> 
-        <Route  path="/reg" component={register} exact />      
+        <Route  path="/registered" component={register} exact />      
      </BrowserRouter>
       </div>
   );
