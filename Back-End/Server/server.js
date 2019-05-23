@@ -65,7 +65,7 @@ app.post('/getRest',(req,res) =>{
 
 
 
-// // to creare the connection
+
 // const connection = mysql.createConnection({
 //     host : 'localhost',
 //     user:'root',
