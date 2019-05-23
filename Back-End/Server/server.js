@@ -211,7 +211,13 @@ app.post('/registered', function(req, res) {
     MealsandPrice:req.body.PriceandMeal
   };
   const added = 'INSERT INTO usersInfo SET ?'
+  const Check = `SELECT * From userInfo Where Name = ${req.body.UserName}`;
+  console.log(Check)
+  if(Check !== undefined){
+    res.send("Is Here")
+  }
   UsersConection.query(added,newRestaurant,(err,result)=>{
+    console.log(newRestaurant)
     if(err) throw err;
     console.log(result);
     console.log("User Was Added")
@@ -221,7 +227,8 @@ res.redirect("http://localhost:3000/login")
 });  
 
 app.post("/login",function(req,res){
-  console.log("Qusai")
+  console.log(req.body.UserName);
+  const Find = 'select'`+re+`
   res.send("Hi");
 })
   
