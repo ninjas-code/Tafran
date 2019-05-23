@@ -12,7 +12,7 @@ const testAPIRouter = require("./testAPI.js")
 app.use(Core()); // to solve the Proxy Problem
 
 app.use("/testAPP",testAPIRouter) // To Conact the Router to the server
-
+//1
 /*This Solve the access to the server problem - qusai*/ 
 app.use("http://localhost:3000/",function (req, res, next) {
 
