@@ -109,9 +109,6 @@ class Food extends React.Component {
               <button className="search"
                 onClick={this.sendPriceToServer.bind(this)}    >submit your budget</button><br></br>
 
-
-
-              {/* {!this.state.isHidden && <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} />} */}
               {this.state.dispalyMealList ?
                 <MealsList meals={this.state.meals} sendRestNameAndPrice={this.sendRestNameAndPrice.bind(this)} /> :
                 null
@@ -141,10 +138,10 @@ class MealsList extends React.Component {
           <table >
             <thead>
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Age</th>
-                <th>Age</th>
+                <th>Resturant Name</th>
+                <th>Meals Name  </th>
+                <th>  </th>
+                <th>Price</th>
               </tr>
             </thead>
             <tbody>
