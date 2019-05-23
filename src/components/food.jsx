@@ -1,13 +1,8 @@
 import React from 'react';
-import { BrowserRouter , Route} from 'react-router-dom';
-import $ from 'jquery'; 
+import { BrowserRouter } from 'react-router-dom';
+// import $ from 'jquery'; 
 import "../App.css"
-import { userInfo } from 'os';
-import mealsList from "./mealsList.jsx"
-import {NavLink} from 'react-router-dom';
-import ThelistFood from './mealsList.jsx';
-
-
+// import { userInfo } from 'os';
 
 // Don't Touch this /Qusai/
 const url = "http://localhost:5000/"; 
@@ -16,98 +11,208 @@ fetch(url)
 .then(contents => console.log(contents))
 .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
-class Food extends React.Component{
+class Food extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: ''
+      Price: '',
+      Name: '',
+      dispalyMealList: false,
+      displaRestList: false,
+      meals: [],
+      resturants: [],
+      isHidden: true
     }
   }
 
   handelPriceChange(e) {
-    console.log(e)
     this.setState({
-      id : e.target.value,
+      Price: e.target.value,
     });
-    console.log(this.state.id);
+    console.log(this.state.Price);
   }
 
- // The User info Get it from the data base // Qusai
-      state={
-        error:null,
-        loading:true,
-        users:[],
-        apiResponse:[]
-        
+  hande(e) {
+    this.setState({
+      Price: e.target.value,
+    });
+    console.log(this.state.Price);
+  }
 
-      };
-      // to updata the user info and put it in the front end // Qusai
-      TheInfo=()=>{
-        this.setState({
-          apriResponse:[],
-        })
-      }
-      
-      // headers.append('Access-Cntrol-Allow-Origin','http://localhost:3000');
-      // async
-       componentDidMount(){
-        fetch('/getUsers',{
-        method:"GET",
-        mode:'cors',
-        cache:'no-cache',
-        credentials:'same-origin',
-        headers:{
-          'Content-Type':"application/json"
-        },
-        redirect:"follow",
-        referrer:"no-referrer",
-        body:JSON.stringify(this.state.apiResponse)
-        })
-        // to make it wor just change the json to text /Qusai/
-        .then(res => res.text())
-        .then(res => this.setState({apiResponse:res}))
-        .catch(err => err);
-      };
-      componentWillMount(){
-        this.componentDidMount();
-      };
+  toggleHidden() {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
+  sendRestNameAndPrice(e, mealObj) {
+    e.preventDefault();
+
+    // var body = {
+    //   price: this.state.Price,
+    //   name : this.state.Name
+    // }
+    console.log(mealObj);
+
+    fetch('http://localhost:5000/getRest', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(mealObj)
+    }).then((response) => {
+      return response.json();
+    }).then((data) => {
+      console.log(data);
+      this.setState({
+        resturants:data,
+        dispalyMealList: false,
+        displaRestList: true
+      })
+    });
 
 
-      
-    render(){
-      const {apiResponse,error}=this.state;
-      if(error){
-        return <div>{error.message}</div>
-      }
-        return(
-      <BrowserRouter>      
-    <div className="App">
-    
-    <header className="App-header">
-      {console.log(apiResponse)}
-      {this.state.loading || !this.state.Name ? (
-    <div> <img className="lodding" src="https://cdn.dribbble.com/users/807926/screenshots/3629667/loadingtwo.gif"/></div> ):(
-     <div>{this.state.Name}</div>
-     )}
-     <h1 className="title">Put the Price</h1>
 
-      <form method="POST" action="/Price" >
-      <input className="Input" placeholder="in how mutch you want to eat" value= {this.state.id} onChange={this.handelPriceChange.bind(this)} name="Price" required/>
-      <button className="button">search</button>
-      <p>This is coming from the data base {apiResponse}</p>
-      {/* onClick={this.sendPriceToServer.bind(this)} */}
-      </form>
-    </header>
-  
-  </div>
-  </BrowserRouter>
-        )}
+  }
+
+  sendPriceToServer(e) {
+    e.preventDefault();
+    var body = {
+      price: this.state.Price
+    }
+    console.log(body)
+
+    fetch('http://localhost:5000/getMealsByPrice', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    }).then((response) => {
+      return response.json();
+    }).then((data) => {
+      console.log(data);
+      this.setState({
+        meals: data,
+        dispalyMealList: true
+      })
+    });
+  }
+
+
+  render() {
+    return (
+      <BrowserRouter>
+        <div className="App">
+
+          <header className="App-header">
+
+            <form>
+
+
+              <input className="input1"
+                placeholder="Your Budget Here"
+                value={this.state.Price}
+                onChange={this.handelPriceChange.bind(this)}
+                name="price" required />   <br></br>
+
+              <button className="search1"
+                onClick={this.sendPriceToServer.bind(this)}    >submit your budget</button><br></br>
+
+
+
+              {/* {!this.state.isHidden && <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} />} */}
+              {this.state.dispalyMealList ?
+                <MealsList meals={this.state.meals} sendRestNameAndPrice={this.sendRestNameAndPrice.bind(this)} /> :
+                null
+              }
+
+              {this.state.displaRestList ?
+                <Resturant resturants={this.state.resturants} /> :
+                null
+              }
+
+            </form>
+          </header>
+
+        </div>
+      </BrowserRouter>
+    )
+  }
 };
 
-export default Food;
+class MealsList extends React.Component {
 
+  render(props) {
+
+    return (
+      <div className="TheMainInfo">{
+        this.props.meals.length > 0 ?
+          <table >
+            <thead>
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Age</th>
+                <th>Age</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                this.props.meals.map((meal, i) => {
+                  return <tr key={i} value={meal} onClick={(event) => this.props.sendRestNameAndPrice(event, meal)}>
+
+                    <td>{meal.restName}</td>
+                    <td>{meal.mealName}</td>
+                    <td>{" the price : "}</td>
+                    <td>{meal.price}{'$'}</td>
+                  </tr>
+
+                })
+              }
+            </tbody>
+          </table> : 'Please, enter anothor price'
+
+      }
+      </div>
+    )
+  }
+}
+
+
+class Resturant extends React.Component {
+
+  render(props) {
+
+    return (
+      <div className="TheMainInfo">{
+        this.props.resturants.length > 0 ?
+          <table >
+            <thead>
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Age</th>
+                <th>Age</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                this.props.resturants.map((resturant, i) => {
+                  return <tr key={i} onClick={() => console.log("this is" + resturant.restName)}>
+
+                    <td>{resturant.name}</td>
+                    <td>{resturant.phone}</td>
+                    <td>{resturant.address}</td>
+                  </tr>
+
+                })
+              }
+            </tbody>
+          </table> : null
+
+      }
+      </div>
+    )
+  }
+}
+
+
+
+
+export default Food;

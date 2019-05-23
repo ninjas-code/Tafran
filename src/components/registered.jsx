@@ -3,22 +3,91 @@ import {browseRoute} from 'react-router-dom';
 
 
 class register extends React.Component{
+    constructor(){
+        super();
+        this.state={
+            UserName:"",
+            Password:"",
+            Location:"",
+            PhoneNumber:"",
+            Restaurant:"",
+            PriceandMeal:"",
+            errors:{}
+
+        }
+        // this.onChange = this.onChange.bind(this);
+        // this.onClick = this.onClick.bind(this);
+    }
+    
+    onChange(e){
+        this.setState({[e.target.name]:e.target.value})
+    }
+    onClick(e){
+        e.preventdefault();
+        const Users = {
+            /// The Data For  The Users
+            Username : this.state.UserName,
+            Password:this.state.Password,
+            Location:this.state.Location,
+            PhoneNumber:this.state.PhoneNumber,
+            Restaurant:this.state.Restaurant,
+            PriceandMeal:this.state.PriceandMeal
+        }
+    }
+
+    sendRestNameAndPrice(e, mealObj) {
+        e.preventDefault();
+        console.log(mealObj);
+        fetch('http://localhost:5000/getRest', {
+          method: 'POST',
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(mealObj)
+        }).then((response) => {
+          return response.json();
+        }).then((data) => {
+          console.log(data);
+          this.setState({
+            resturants:data,
+            dispalyMealList: false,
+            displaRestList: true
+          })
+        });
+    
+    
+    
+      }
+    
+      handelUserChange(e) {
+        this.setState({
+            UserName: e.target.value,
+            Password: e.target.value,
+            Location: e.target.value,
+            PhoneNumber:e.target.value,
+            Restaurant:e.target.value,
+            PriceandMeal:e.target.value
+        });
+        console.log(this.state.UserName);
+      }
+
+
+
+
     render(){
         return(
             <div className="UserHeader">
             <form method="POST" action="/NewUser">  
-            <h1 className="UserTitles" name="UserName"><i class="fas fa-user"></i> UserName</h1>
-            <input type="text" className="UserInput" required/>
-            <h1 className="UserTitles" name="Password"><i class="fas fa-lock"></i> Password</h1>
-            <input type="password" className="UserInput" required/>
-            <h1 className="UserTitles" name="Location"><i class="fas fa-map-marked-alt"></i> Location</h1>
-            <input type="text" className="UserInput" required/>
-            <h1 className="UserTitles" name="PhoneNumber"><i class="fas fa-mobile-alt"></i> Phone Number</h1>
-            <input type="text" className="UserInput" required/>
+            <h1 className="UserTitles" ><i class="fas fa-user"></i> UserName</h1>
+            <input type="email" className="UserInput"  name="UserName" onChange={this.handelUserChange.bind(this)} required/>
+            <h1 className="UserTitles" ><i class="fas fa-lock"></i> Password</h1>
+            <input type="password"  name="Password" className="UserInput"  onChange={this.handelUserChange.bind(this)} required/>
+            <h1 className="UserTitles"><i class="fas fa-map-marked-alt"></i> Location</h1>
+            <input type="text" name="Location" className="UserInput"  onChange={this.handelUserChange.bind(this)} required/>
+            <h1 className="UserTitles" ><i class="fas fa-mobile-alt"></i> Phone Number</h1>
+            <input type="text" name="PhoneNumber" className="UserInput"onChange={this.handelUserChange.bind(this)}  required/>
             <h1 className="UserTitles"><i class="fas fa-store"></i> The Restaurant</h1>
-            <input type="text" className="UserInput" name="Restaurant" required/>
+            <input type="text" className="UserInput" name="Restaurant" onChange={this.handelUserChange.bind(this)} required/>
             <h1 className="UserTitles"><i class="fas fa-dollar-sign"></i> Meals and The Price For every Meal</h1>
-            <input type="text" className="UserInput" name="PriceandMeal" required/>
+            <input type="text" className="UserInput" name="PriceandMeal" onChange={this.handelUserChange.bind(this)} required/>
 
             <button type="submit" className="ButtonLog" >register</button>
             </form>

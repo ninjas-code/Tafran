@@ -1,43 +1,31 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
-
+// import ReactDOM from 'react-dom'
 import './App.css';
-import { BrowserRouter , Route , Switch} from 'react-router-dom';
+import { BrowserRouter , Route } from 'react-router-dom';
 import Food from './components/food.jsx';
-import Err from './components/404Page.jsx';
+// import Err from './components/404Page.jsx';
 import Navgation from './components/Nav.jsx';
 import Login from './components/login.jsx';
-import registered from './components/registered.jsx'
-import ThelistFood from './components/mealsList.jsx';
+import register from './components/registered.jsx';
+
+//  import MealsList from './components/mealsList.jsx';
 
 
 
 
 class App extends React.Component {
-   /* <Route path="/test" component={test} />
-    <Route path="/test1" component={Food} />*/ 
 
-    
 render(){
   return (
-    <BrowserRouter>
     
     <div className="App">
-      
-
-      <Navgation className="TheNav"></Navgation>
-    {/* <MealsList meals ={[{name:'meal1',price:2},{name:'meal2',price:4},{name:'meal3',price:3},{name:'meal4',price:5}]}/> */}
-      <Switch>
-      <Route path="/" component={Food} exact/>
-      <Route path="/registere" component={registered} exact/>
-      <Route path="/login" component={Login} exact/>
-      <Route path="/list" component={ThelistFood} exact/>
-      <Route component={Err} exact/>
-      </Switch>
-
+     <BrowserRouter>
+      <Navgation/>    
+      <Route  path="/" component={Food} exact />
+        <Route  path="/login" component={Login} exact /> 
+        <Route  path="/reg" component={register} exact />      
+     </BrowserRouter>
       </div>
-     
-    </BrowserRouter>
   );
   }
 }
