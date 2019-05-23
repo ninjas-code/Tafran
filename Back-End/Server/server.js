@@ -163,8 +163,7 @@ connection.connect((err)=>{
 // THE SERVER
 app.use(express.static('public'))
 
-// app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
-// To Send the requstes the to FrontEnd
+
 
 // app.post('/')
 router.get('/UU',(req,res,nxt)=>{
