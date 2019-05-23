@@ -39,12 +39,12 @@
     transform: rotate(360deg);
   }
 }
-/* input.input {
+input.input {
   padding: 5%;
   width: 66%;
   font-size: 25%;
   text-align: center;
-} */
+}
 
 button.button {
   padding: 25px;
