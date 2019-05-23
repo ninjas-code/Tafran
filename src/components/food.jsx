@@ -140,7 +140,7 @@ class MealsList extends React.Component {
               <tr>
                 <th>Resturant Name</th>
                 <th>Meals Name  </th>
-                <th>  </th>
+                <th>    </th>
                 <th>Price</th>
               </tr>
             </thead>
@@ -177,10 +177,10 @@ class Resturant extends React.Component {
           <table >
             <thead>
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Age</th>
-                <th>Age</th>
+              <th>Resturant Name</th>
+                <th>Meals Name  </th>
+                <th>    </th>
+                <th>Price</th>
               </tr>
             </thead>
             <tbody>
