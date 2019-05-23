@@ -64,15 +64,6 @@ app.post('/getRest',(req,res) =>{
 });
 
 
-
-
-// const connection = mysql.createConnection({
-//     host : 'localhost',
-//     user:'root',
-//     password:"1111",
-//    database: 'fdp' // Change this to Your Data Base Name in Your My SQL Server - Qusai
-// });
-
 // Create DB - qusai
 app.get("/CRDATA",(req,res)=>{
   let sql = 'CREATE DATABASE if not exists restaurants'
