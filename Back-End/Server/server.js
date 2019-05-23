@@ -195,6 +195,22 @@ app.post('/Q',(res,req) => req.json({Hi:"POST"}) );
 //////////////////////////////////////// USER AREA//////////////////////////
 
 app.post('/registered', function(req, res) {
+  const User =req.body.price;
+  let newRestaurant = {
+    Name:req.body.UserName,
+    password:req.body.Password,
+    location:req.body.Location,
+    phonenumber:req.body.PhoneNumber,
+    TheRestaurant:req.body.Restaurant,
+    MealsandPrice:req.body.PriceandMeal
+  };
+  const added = 'INSERT INTO usersInfo SET ?'
+  connection.query(added,newRestaurant,(err,result)=>{
+    if(err) throw err;
+    console.log(result);
+    console.log("User Was Added")
+
+  })
 res.redirect("http://localhost:3000/login")
 });  
   
