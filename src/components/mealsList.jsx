@@ -51,13 +51,7 @@
 // 							<il key={index} item={item} />
 // 						))} */}
 // 						</ul>:null
-					
-// 			}
-// 				</div>
-// 		)
-//   }
-// }
-// export default MealsList;
+
  
 
 
