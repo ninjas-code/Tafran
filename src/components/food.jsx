@@ -64,8 +64,6 @@ class Food extends React.Component {
       })
     });
 
-
-
   }
 
   sendPriceToServer(e) {
