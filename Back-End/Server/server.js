@@ -64,7 +64,7 @@ app.post('/getRest',(req,res) =>{
 });
 
 
-// Create DB - qusai
+// Create DB 
 app.get("/CRDATA",(req,res)=>{
   let sql = 'CREATE DATABASE if not exists restaurants'
   connection.query(sql,(err,result)=>{
@@ -117,7 +117,7 @@ app.get("/CRTable",(req,res)=>{
   })
 })
 
-// Search Into the database   and appear all the data /Qusai/
+// Search Into the database   and appear all the data 
 var users =[];
 app.get("/getUsers",(req,res)=>{
   let serchItem = 'SELECT * FROM meals';
@@ -131,7 +131,7 @@ app.get("/getUsers",(req,res)=>{
     });
 });
 
-// Search Into the database and appear all the data / Qusai/
+// Search Into the database and appear all the data 
 app.get("/getoneUser",(req,res)=>{
   let serchItem = `
   SELECT * 
@@ -181,7 +181,7 @@ app.get('/TE',(req,res) => res.json({Second:"The Second GEt"}) );
 app.post('/Q',(res,req) => req.json({Hi:"POST"}) );
 
 
-//app.get('/',(res,req) => res.sendfile('index.html'));
+
 
 app.get('/',(req,res,next) => res.json({Start:"The First Get"}) );
   
