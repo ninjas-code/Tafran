@@ -12,6 +12,11 @@ res.json({"HI":"Hi"})
 router.post("/registered",(req,res,next)=>{
     res.send("Hello")
     })
+
+// router.POST("/login",(req,res,next)=>{
+//         res.send("Hello")
+//         })
+    
     
 
 

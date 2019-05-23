@@ -18,7 +18,13 @@ const connection = mysql.createConnection({
     host : 'localhost',
     user:'root',
     password:"1111",
-   database: 'users'
+   database: 'fdp'
+});
+const UsersConection = mysql.createConnection({
+  host : 'localhost',
+  user:'root',
+  password:"1111",
+ database: 'users'
 });
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -205,7 +211,7 @@ app.post('/registered', function(req, res) {
     MealsandPrice:req.body.PriceandMeal
   };
   const added = 'INSERT INTO usersInfo SET ?'
-  connection.query(added,newRestaurant,(err,result)=>{
+  UsersConection.query(added,newRestaurant,(err,result)=>{
     if(err) throw err;
     console.log(result);
     console.log("User Was Added")
@@ -213,8 +219,13 @@ app.post('/registered', function(req, res) {
   })
 res.redirect("http://localhost:3000/login")
 });  
+
+app.post("/login",function(req,res){
+  console.log("Qusai")
+  res.send("Hi");
+})
   
-  /////////////////////////////////////USER AREA ////////////////////////////////////////
+  /////////////////////////////////////USER AREA END ////////////////////////////////////////
 
 //app.get('/',(res,req) => res.sendfile('index.html'));
 
