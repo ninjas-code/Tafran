@@ -11,10 +11,10 @@ app.use(bodyparser.urlencoded({
 }));
 // to creare the connection
 const connection = mysql.createConnection({
-    host : 'remotemysql.com/3306',
-    user:'oqcPRrlK7a',
-    password:'aa7uESrnng',
-   database: 'oqcPRrlK7a'
+    host : 'localhost',
+    user:'root',
+    password:'wael2663520',
+   database: 'fdp'
 });
 
 
