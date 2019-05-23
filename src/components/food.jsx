@@ -1,10 +1,9 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-// import $ from 'jquery'; 
 import "../App.css"
-// import { userInfo } from 'os';
 
-// Don't Touch this /Qusai/
+
+// Don't Touch this 
 const url = "http://localhost:5000/"; 
 fetch(url)
 .then(response => response.text())
