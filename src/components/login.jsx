@@ -7,7 +7,7 @@ class Login extends React.Component{
         return(
             <div>
             <form>  
-            <h1>UserName</h1>
+            <h1>UserNamse</h1>
             <input type="text" required/>
             <h1>Passwords</h1>
             <input type="password" required/>

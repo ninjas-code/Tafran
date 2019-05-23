@@ -1,5 +1,7 @@
 import React from 'react';
-//import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom'
+
+
 
 
 
@@ -15,15 +17,9 @@ import Resturant from './components/resturant';
 
 
 class App extends React.Component {
-  
-//   state = {
-//     questions: [
-//        { id: 'fdsd', title: 'Why is the sky blue?' },
-//        { id: 'adsf', title: 'Who invented pizza?' },
-//        { id: 'afdsf', title: 'Is green tea overrated?' },
-//     ],
-//        displayQuestions: false
-// }
+   /* <Route path="/test" component={test} />
+    <Route path="/test1" component={Food} />*/ 
+
     
 render(){
   return (
@@ -52,6 +48,5 @@ render(){
   );
   }
 }
-
 
 export default App;

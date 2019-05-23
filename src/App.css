@@ -45,10 +45,13 @@
   font-size: 25%;
   text-align: center;
 } */
-input.input{
 
- 
+button.button {
+  padding: 25px;
+  margin: 10px;
+  width: 36%;
+  font-size: 30px;
 }
-button.search {
- 
+.lodding{
+  max-width: 350px;
 }

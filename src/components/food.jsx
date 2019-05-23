@@ -1,7 +1,15 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+// import $ from 'jquery'; 
+import "../App.css"
+// import { userInfo } from 'os';
 
-// import MealsList from './mealsList';
+// Don't Touch this /Qusai/
+const url = "http://localhost:5000/"; 
+fetch(url)
+.then(response => response.text())
+.then(contents => console.log(contents))
+.catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
 
 class Food extends React.Component {
   constructor(props) {
@@ -15,15 +23,7 @@ class Food extends React.Component {
       resturants: [],
       isHidden: true
     }
-    // this.showMealList = this.showMealList.bind(this);
   }
-  // showMealList(){
-  //  this.setState({
-  //   dispalyMealList:true
-  //  });
-
-
-  // }
 
   handelPriceChange(e) {
     this.setState({
@@ -62,8 +62,7 @@ class Food extends React.Component {
     }).then((data) => {
       console.log(data);
       this.setState({
-        resturants:data
-        ,
+        resturants:data,
         dispalyMealList: false,
         displaRestList: true
       })

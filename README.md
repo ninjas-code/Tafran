@@ -1,16 +1,27 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## The Secripts
 
 In the project directory, you can run:
+you need to npm install the flowing code 
+express
+cors
+express-router
+mysql2
+nodemon
+react-dom
+web-packs
 
-### `npm start`
+### `Techs`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+To run react server 
+run this code npm start
+to run the server enter the folder inside the 
+back end folder and run this code node server.js
+
 
 ### `npm test`
 
