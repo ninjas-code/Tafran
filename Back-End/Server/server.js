@@ -4,7 +4,7 @@ const router = express.Router();
 const PORT = 5000;
 const bodyparser = require('body-parser')
 const mysql = require('mysql');
-// const path = require('path');
+
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
   extended: true
