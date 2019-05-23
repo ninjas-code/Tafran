@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
 // getting the price from frontEnd and send the meals back
 app.post('/getMealsByPrice',(req,res) =>{
   const price =req.body.price;
-  // console.log(price)
+  
     let serchItem = `SELECT  m.name as mealName,r.name as restName,mt.size, price
     FROM restmealmenue rmm
     Inner Join restaurants r on (rmm.RestId = r.Id)
