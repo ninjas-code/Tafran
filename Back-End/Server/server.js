@@ -38,7 +38,7 @@ app.post('/getMealsByPrice',(req,res) =>{
     order by m.name, r.name, mt.size, price`;
  connection.query(serchItem,(err,result)=>{
     if(err) throw err;
-    // console.log(result);
+    
     res.send(result)
   })
 });
