@@ -106,13 +106,13 @@ class Food extends React.Component {
 
 
               <input className="input"
-                placeholder="Your Budget"
+                placeholder="Your Budget Here"
                 value={this.state.Price}
                 onChange={this.handelPriceChange.bind(this)}
                 name="price" required />   <br></br>
 
               <button className="search"
-                onClick={this.sendPriceToServer.bind(this)}    >submit your budjet</button><br></br>
+                onClick={this.sendPriceToServer.bind(this)}    >submit your budget</button><br></br>
 
 
 
@@ -166,7 +166,7 @@ class MealsList extends React.Component {
                 })
               }
             </tbody>
-          </table> : null
+          </table> : 'Please, enter anothor price'
 
       }
       </div>
