@@ -158,7 +158,7 @@ class MealsList extends React.Component {
                   <td className="MealsF">{meal.restName}</td>
                     <td className="MealsF">{meal.mealName}</td>
                     {/* <td className="MealsF">{" the price : "}</td> */}
-                    <td className="MealsF">{meal.price}{'$'}</td>
+                    <td className="MealsF">{meal.price}{' JD'}</td>
                   </tr>
 
                 })

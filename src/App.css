@@ -130,3 +130,46 @@ td.restaurnt5 {
   font-weight: 400;
   padding: 18px;
 }
+
+.UserHeader {
+  background: #ffb700;
+  width: 400px;
+  margin: 0 auto;
+  border: 0.1px solid;
+  border-radius: 19px;
+    font-size: 19px;
+    padding: 30px;
+
+}
+h1.UserTitles {
+  font-size: 18px;
+}
+.fas {
+  font-weight: 900;
+  margin-right: 7px;
+  font-size: 21px;
+}
+.UserInput {
+  padding: 7px;
+  border-radius: 17px;
+  border: 0.2px;
+}
+.ButtonLog {
+  margin-top: 19px;
+  margin-bottom: 6px;
+  border-radius: 17px;
+  width: 32%;
+  border: 0.1px;
+  font-size: 23px;
+  font-family: 'Francois One', sans-serif;
+}
+.SignUp{
+  font-size: 20px;
+  padding: 14px;
+  text-decoration: none;
+  color: #000;
+}
+.NaV {
+  margin-top: 2%;
+}
+

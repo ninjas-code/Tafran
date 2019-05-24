@@ -7,9 +7,9 @@ import {NavLink} from 'react-router-dom';
 const Navgation =() =>{
 
     return(
-        <div>
-         <NavLink to="/registered">Sign UP</NavLink> <br></br>
-        <NavLink to="/">home</NavLink>  
+        <div className="NaV">
+         <NavLink  className="SignUp" to="/registered"><i class="fas fa-user-tie"></i>Sign Up</NavLink>
+        <NavLink className="SignUp" to="/"><i class="fas fa-home"></i></NavLink>  
        </div>
 
 
