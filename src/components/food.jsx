@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+// import $ from 'jquery'; 
 import "../App.css"
+// import { userInfo } from 'os';
 
 
 // Don't Touch this 
@@ -46,7 +48,10 @@ class Food extends React.Component {
   sendRestNameAndPrice(e, mealObj) {
     e.preventDefault();
 
-    
+    // var body = {
+    //   price: this.state.Price,
+    //   name : this.state.Name
+    // }
     console.log(mealObj);
 
     fetch('http://localhost:5000/getRest', {
@@ -63,6 +68,8 @@ class Food extends React.Component {
         displaRestList: true
       })
     });
+
+
 
   }
 
@@ -82,8 +89,7 @@ class Food extends React.Component {
     }).then((data) => {
       console.log(data);
       this.setState({
-        meals:data,
-       
+        meals: data,
         dispalyMealList: true
       })
     });
@@ -93,22 +99,22 @@ class Food extends React.Component {
   render() {
     return (
       <BrowserRouter>
+      <img src="https://files.slack.com/files-pri/TGEHN6M8Q-FJZBQCXB2/free_sample_by_wix__2_.jpeg" />
         <div className="App">
-
           <header className="App-header">
-
             <form>
-
-
-              <input className="input"
+              <input className="input1"
                 placeholder="Your Budget Here"
                 value={this.state.Price}
                 onChange={this.handelPriceChange.bind(this)}
-                name="price" required />   <br></br>
+                name="price" required />  
 
-              <button className="search"
-                onClick={this.sendPriceToServer.bind(this)}    >submit your budget</button><br></br>
+              <button className="search1"
+                onClick={this.sendPriceToServer.bind(this)}    ><i class="fas fa-search"></i></button><br></br>
 
+
+
+              {/* {!this.state.isHidden && <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} />} */}
               {this.state.dispalyMealList ?
                 <MealsList meals={this.state.meals} sendRestNameAndPrice={this.sendRestNameAndPrice.bind(this)} /> :
                 null
@@ -133,15 +139,15 @@ class MealsList extends React.Component {
   render(props) {
 
     return (
-      <div>{
+      <div className="TheMainInfo">{
         this.props.meals.length > 0 ?
-          <table >
+          <table className="Tabel">
             <thead>
               <tr>
-                <th>Resturant Name</th>
-                <th>Meals Name  </th>
-                <th>    </th>
-                <th>Price</th>
+              <th className="MealsR"><i class="fas fa-utensils"></i>TheRestRunt</th>
+                <th className="MealsR">Meal</th>
+                {/* <th className="MealsR">Age</th> */}
+                <th className="MealsR">Price</th>
               </tr>
             </thead>
             <tbody>
@@ -149,14 +155,16 @@ class MealsList extends React.Component {
                 this.props.meals.map((meal, i) => {
                   return <tr key={i} value={meal} onClick={(event) => this.props.sendRestNameAndPrice(event, meal)}>
 
-                    <td>{meal.restName}</td>
-                    <td>{meal.mealName}</td>
-                    <td>{" the price : "}</td>
-                    <td>{meal.price}{'$'}</td>
+                  {/* <i class="fas fa-utensils"></i> */}
+                  <td className="MealsF">{meal.restName}</td>
+                    <td className="MealsF">{meal.mealName}</td>
+                    {/* <td className="MealsF">{" the price : "}</td> */}
+                    <td className="MealsF">{meal.price}{' JD'}</td>
                   </tr>
 
                 })
               }
+              
             </tbody>
           </table> : 'Please, enter anothor price'
 
@@ -172,15 +180,14 @@ class Resturant extends React.Component {
   render(props) {
 
     return (
-      <div>{
+      <div className="TheMainInfo">{
         this.props.resturants.length > 0 ?
           <table >
             <thead>
               <tr>
-              <th>Resturant Name</th>
-                <th>Meals Name  </th>
-                <th>    </th>
-                <th>Price</th>
+                <th className="restaurnt4">Resturant Name</th>
+                <th className="restaurnt4">Meal</th>
+                <th className="restaurnt4">Address</th>
               </tr>
             </thead>
             <tbody>
@@ -188,9 +195,9 @@ class Resturant extends React.Component {
                 this.props.resturants.map((resturant, i) => {
                   return <tr key={i} onClick={() => console.log("this is" + resturant.restName)}>
 
-                    <td>{resturant.name}</td>
-                    <td>{resturant.phone}</td>
-                    <td>{resturant.address}</td>
+                    <td className="restaurnt5">{resturant.name}</td>
+                    <td className="restaurnt5">{resturant.phone}</td>
+                    <td className="restaurnt5">{resturant.address}</td>
                   </tr>
 
                 })
