@@ -15,8 +15,7 @@ class register extends React.Component{
             errors:{}
 
         }
-        // this.onChange = this.onChange.bind(this);
-        // this.onClick = this.onClick.bind(this);
+       
     }
     
     render(){
