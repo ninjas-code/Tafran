@@ -101,15 +101,14 @@ class Food extends React.Component {
         <div className="App">
           <header className="App-header">
             <form>
-              <h1>Put The Price</h1>
               <input className="input1"
                 placeholder="Your Budget Here"
                 value={this.state.Price}
                 onChange={this.handelPriceChange.bind(this)}
-                name="price" required />   <br></br>
+                name="price" required />  
 
               <button className="search1"
-                onClick={this.sendPriceToServer.bind(this)}    >submit your budget</button><br></br>
+                onClick={this.sendPriceToServer.bind(this)}    ><i class="fas fa-search"></i></button><br></br>
 
 
 
@@ -140,13 +139,13 @@ class MealsList extends React.Component {
     return (
       <div className="TheMainInfo">{
         this.props.meals.length > 0 ?
-          <table >
+          <table className="Tabel">
             <thead>
               <tr>
               <th className="MealsR"><i class="fas fa-utensils"></i>TheRestRunt</th>
                 <th className="MealsR">Meal</th>
                 {/* <th className="MealsR">Age</th> */}
-                <th className="MealsR">Age</th>
+                <th className="MealsR">Price</th>
               </tr>
             </thead>
             <tbody>
@@ -163,6 +162,7 @@ class MealsList extends React.Component {
 
                 })
               }
+              
             </tbody>
           </table> : 'Please, enter anothor price'
 
@@ -183,10 +183,9 @@ class Resturant extends React.Component {
           <table >
             <thead>
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Age</th>
-                <th>Age</th>
+                <th className="restaurnt4">Resturant Name</th>
+                <th className="restaurnt4">Meal</th>
+                <th className="restaurnt4">Address</th>
               </tr>
             </thead>
             <tbody>
@@ -194,9 +193,9 @@ class Resturant extends React.Component {
                 this.props.resturants.map((resturant, i) => {
                   return <tr key={i} onClick={() => console.log("this is" + resturant.restName)}>
 
-                    <td>{resturant.name}</td>
-                    <td>{resturant.phone}</td>
-                    <td>{resturant.address}</td>
+                    <td className="restaurnt5">{resturant.name}</td>
+                    <td className="restaurnt5">{resturant.phone}</td>
+                    <td className="restaurnt5">{resturant.address}</td>
                   </tr>
 
                 })

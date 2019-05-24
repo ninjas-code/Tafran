@@ -14,17 +14,7 @@
 }
 
 .App-header {
-  /* background-image: url("./Background1.jpg"); */
-  background-size:contain;
-  background-position:top;
-  background: cover;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(38, 8, 146);
+  
 }
 
 .App-link {
@@ -51,6 +41,7 @@ button.button {
   margin: 10px;
   width: 36%;
   font-size: 30px;
+  
 }
 .lodding{
   max-width: 350px;
@@ -75,15 +66,20 @@ button.button {
   /* background: red; */
   margin-bottom: 14px;
   padding: 14px;
-  color: #000;
+  color: #fff;
   font-size: 24px;
   font-family: 'Francois One', sans-serif;
 }
 .TheMainInfo {
   margin-top: 19px;
-  background: #ffb700;
-  padding: 25px;
-  border-radius: 17px;
+    background: #000;
+    color: #fff;
+    padding: 25px;
+    border-radius: 17px;
+    width: 53%;
+    margin: 0 auto;
+    margin-top: 29px;
+    /* margin-left: 15%; */
 }
 th.MealsR {
   color: #fff;
@@ -93,4 +89,44 @@ th.MealsR {
 .fa, .fas {
   font-weight: 900;
   margin-right: 7px;
+}
+input.input1 {
+  padding: 32px;
+  border-radius: 50px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border: 5px solid #71db76;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 45%;
+  text-align: center;
+  font-size: 29px;
+  margin: 27px 5px;
+  font-family: 'Francois One', sans-serif;
+}
+table.Tabel {
+  margin: 0 auto;
+}
+.search1 {
+  background-color: #fff;
+  border: none;
+  color: rgb(113, 219, 119);
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 26px;
+}
+.fa-search:before {
+  content: "\f002";
+  font-size: 39px;
+}
+td.restaurnt5 {
+  font-weight: 400;
+  padding: 18px;
 }
