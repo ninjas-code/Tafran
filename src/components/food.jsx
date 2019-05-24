@@ -152,10 +152,10 @@ class MealsList extends React.Component {
                 this.props.meals.map((meal, i) => {
                   return <tr key={i} value={meal} onClick={(event) => this.props.sendRestNameAndPrice(event, meal)}>
 
-                  {/* <i class="fas fa-utensils"></i> */}
+                  
                   <td className="MealsF">{meal.restName}</td>
                     <td className="MealsF">{meal.mealName}</td>
-                    {/* <td className="MealsF">{" the price : "}</td> */}
+                   
                     <td className="MealsF">{meal.price}{' JD'}</td>
                   </tr>
 
