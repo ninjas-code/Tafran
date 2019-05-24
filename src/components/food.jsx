@@ -111,7 +111,7 @@ class Food extends React.Component {
 
 
 
-              {/* {!this.state.isHidden && <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} />} */}
+             
               {this.state.dispalyMealList ?
                 <MealsList meals={this.state.meals} sendRestNameAndPrice={this.sendRestNameAndPrice.bind(this)} /> :
                 null
