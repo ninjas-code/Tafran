@@ -143,7 +143,7 @@ class MealsList extends React.Component {
               <tr>
               <th className="MealsR"><i class="fas fa-utensils"></i>TheRestRunt</th>
                 <th className="MealsR">Meal</th>
-                {/* <th className="MealsR">Age</th> */}
+                
                 <th className="MealsR">Price</th>
               </tr>
             </thead>
