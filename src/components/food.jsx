@@ -98,6 +98,7 @@ class Food extends React.Component {
   render() {
     return (
       <BrowserRouter>
+      <img src="https://files.slack.com/files-pri/TGEHN6M8Q-FJZBQCXB2/free_sample_by_wix__2_.jpeg" />
         <div className="App">
           <header className="App-header">
             <form>
