@@ -6,7 +6,7 @@ about Meals  less then there Budgut
 
 ## Getting Started
  npm install
- npm start
+ npm startgh h
 
 
 ### Prerequisites
