@@ -1,5 +1,5 @@
 import React from "react";
-import {browseRoute} from 'react-router-dom';
+// import {browseRoute} from 'react-router-dom';
 
 
 class register extends React.Component{

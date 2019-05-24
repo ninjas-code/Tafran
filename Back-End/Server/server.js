@@ -136,7 +136,7 @@ app.get("/CRTable",(req,res)=>{
   })
 })
 
-// Search Into the database   and appear all the data /Qusai/
+// Search Into the database   and appear all the data 
 var users =[];
 app.get("/getUsers",(req,res)=>{
   let serchItem = 'SELECT * FROM meals';
@@ -150,7 +150,7 @@ app.get("/getUsers",(req,res)=>{
     });
 });
 
-// Search Into the database and appear all the data / Qusai/
+// Search Into the database and appear all the data 
 app.get("/getoneUser",(req,res)=>{
   let serchItem = `
   SELECT * 
@@ -182,8 +182,7 @@ connection.connect((err)=>{
 // THE SERVER
 app.use(express.static('public'))
 
-// app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
-// To Send the requstes the to FrontEnd
+
 
 // app.post('/')
 router.get('/UU',(req,res,nxt)=>{
@@ -238,6 +237,7 @@ app.post('/registered', function(req, res,next) {
     console.log("User Was Added")
 
   })
+
   
 res.redirect("http://localhost:3000/ThankYouPage")
 });  
@@ -250,7 +250,6 @@ app.post("/login",function(req,res){
   
   /////////////////////////////////////USER AREA END ////////////////////////////////////////
 
-//app.get('/',(res,req) => res.sendfile('index.html'));
 
 app.get('/',(req,res,next) => res.json({Start:"The First Get"}) );
   
