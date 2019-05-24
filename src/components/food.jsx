@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 // import $ from 'jquery'; 
 import "../App.css"
-// import { userInfo } from 'os';
+
 
 
 // Don't Touch this 
@@ -48,10 +48,7 @@ class Food extends React.Component {
   sendRestNameAndPrice(e, mealObj) {
     e.preventDefault();
 
-    // var body = {
-    //   price: this.state.Price,
-    //   name : this.state.Name
-    // }
+  
     console.log(mealObj);
 
     fetch('http://localhost:5000/getRest', {
