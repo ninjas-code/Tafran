@@ -55,3 +55,42 @@ button.button {
 .lodding{
   max-width: 350px;
 }
+.ThankYouPage {
+  width: 50%;
+  margin: 0 AUTO;
+  padding: 25px;
+  border: 0.1px solid;
+  border-radius: 25px;
+  margin-top: 24px;
+  background: #ffb700;
+  border: 0.1px solid;
+  border-radius: 17px;
+  padding: 12px;
+  font-family: 'Francois One', sans-serif;
+  transition: 80ms;
+  
+}
+.MealsF {
+  margin: 8px;
+  /* background: red; */
+  margin-bottom: 14px;
+  padding: 14px;
+  color: #000;
+  font-size: 24px;
+  font-family: 'Francois One', sans-serif;
+}
+.TheMainInfo {
+  margin-top: 19px;
+  background: #ffb700;
+  padding: 25px;
+  border-radius: 17px;
+}
+th.MealsR {
+  color: #fff;
+  font-family: 'Francois One', sans-serif;
+
+}
+.fa, .fas {
+  font-weight: 900;
+  margin-right: 7px;
+}

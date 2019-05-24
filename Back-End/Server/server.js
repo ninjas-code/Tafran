@@ -4,11 +4,14 @@ const router = express.Router();
 const PORT = 5000;
 const bodyparser = require('body-parser')
 const mysql = require('mysql');
+var expressValidator = require('express-validator');
+const expressSession = require('express-session')
 // const path = require('path');
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
   extended: true
-})); // Hi   dfasdfadfdf
+}));
+app.use(expressValidator({save:"Theapp",saveUninitialized:false,resave:false}));
 // to creare the connection
 
 
@@ -199,9 +202,23 @@ app.get('/TE',(req,res) => res.json({Second:"The Second GEt"}) );
 app.post('/Q',(res,req) => req.json({Hi:"POST"}) );
 
 //////////////////////////////////////// USER AREA//////////////////////////
-
-app.post('/registered', function(req, res) {
+app.get('/registered',(req,res)=>{
+  res.render('index',{title:"TheUserInfo",success:req.session.success,errors:req.session.errors});
+  req.session.errors = null;
+})
+app.post('/registered', function(req, res,next) {
   const User =req.body.price;
+  req.check('UserName',"Invald Email Plese Try Another One").isEmail();
+  req.check('Password',"The Password Should be Numbers").isNumeric().isLength({min:8});
+  var err = req.validationErrors();
+  // if(err){
+  //   // req.session.errors = err;
+  //   // req.session.success = false;
+  //   next();
+  // }else{
+  //   req.session.success = true ;
+  // }
+  
   let newRestaurant = {
     Name:req.body.UserName,
     password:req.body.Password,
@@ -210,12 +227,12 @@ app.post('/registered', function(req, res) {
     TheRestaurant:req.body.Restaurant,
     MealsandPrice:req.body.PriceandMeal
   };
-  const added = 'INSERT INTO usersInfo SET ?'
   const Check = `SELECT * From userInfo Where Name = ${req.body.UserName}`;
+  const added = 'INSERT INTO usersInfo SET ?'
+
   console.log(Check)
-  if(Check !== undefined){
-    res.send("Is Here")
-  }
+
+  
   UsersConection.query(added,newRestaurant,(err,result)=>{
     console.log(newRestaurant)
     if(err) throw err;
@@ -223,7 +240,8 @@ app.post('/registered', function(req, res) {
     console.log("User Was Added")
 
   })
-res.redirect("http://localhost:3000/login")
+  
+res.redirect("http://localhost:3000/ThankYouPage")
 });  
 
 app.post("/login",function(req,res){

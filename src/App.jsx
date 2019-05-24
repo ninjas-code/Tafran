@@ -7,6 +7,8 @@ import Food from './components/food.jsx';
 import Navgation from './components/Nav.jsx';
 import Login from './components/login.jsx';
 import register from './components/registered.jsx';
+import ThankYouPage from './components/ThankYouPage.jsx';
+
 
 //  import MealsList from './components/mealsList.jsx';
 
@@ -23,7 +25,8 @@ render(){
       <Navgation/>    
       <Route  path="/" component={Food} exact />
         <Route  path="/login" component={Login} exact /> 
-        <Route  path="/registered" component={register} exact />      
+        <Route  path="/registered" component={register} exact />
+        <Route path="/ThankYouPage" component={ThankYouPage} exact />    
      </BrowserRouter>
       </div>
   );

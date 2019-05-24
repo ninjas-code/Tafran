@@ -8,7 +8,7 @@ const Navgation =() =>{
 
     return(
         <div>
-         <NavLink to="/login">login as admin</NavLink> <br></br>
+         <NavLink to="/registered">Sign UP</NavLink> <br></br>
         <NavLink to="/">home</NavLink>  
        </div>
 

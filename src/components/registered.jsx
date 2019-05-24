@@ -12,12 +12,19 @@ class register extends React.Component{
             PhoneNumber:"",
             Restaurant:"",
             PriceandMeal:"",
+            UserNameErr:"",
+            PasswordErr:"",
+            LocationErr:"",
+            PhoneNumberErr:"",
+            PriceandMealErr:"",
             errors:{}
 
         }
         // this.onChange = this.onChange.bind(this);
         // this.onClick = this.onClick.bind(this);
     }
+  
+
     
     onChange(e){
         this.setState({[e.target.name]:e.target.value})
@@ -70,7 +77,26 @@ class register extends React.Component{
       }
 
 
+      UserVal=()=>{
 
+        let UserNameErr = '';
+        let PasswordErr = '';
+        let PriceandMealErr ='';
+
+        if(!this.state.UserName.includes("@")){
+         UserNameErr = "Invalid Email";
+        }
+       if(UserNameErr){
+          this.setState({UserNameErr,PasswordErr,PriceandMealErr});
+          return false;
+        }
+        return true;
+      };
+      
+      inVokeUserVal=(event)=>{
+        event.preventDefault();
+        this.UserVal();
+      };
 
     render(){
         return(
@@ -78,8 +104,10 @@ class register extends React.Component{
             <form action="/registered" method="POST">  
             <h1 className="UserTitles" ><i class="fas fa-user"></i> UserName</h1>
             <input type="email" className="UserInput"  name="UserName" onChange={this.handelUserChange.bind(this)} />
+            <div>{this.state.UserNameErr}</div>
             <h1 className="UserTitles" ><i class="fas fa-lock"></i> Password</h1>
             <input type="password"  name="Password" className="UserInput"  onChange={this.handelUserChange.bind(this)} />
+            <div>{this.state.PasswordErr}</div>
             <h1 className="UserTitles"><i class="fas fa-map-marked-alt"></i> Location</h1>
             <input type="text" name="Location" className="UserInput"  onChange={this.handelUserChange.bind(this)} />
             <h1 className="UserTitles" ><i class="fas fa-mobile-alt"></i> Phone Number</h1>
@@ -88,6 +116,7 @@ class register extends React.Component{
             <input type="text" className="UserInput" name="Restaurant" onChange={this.handelUserChange.bind(this)} />
             <h1 className="UserTitles"><i class="fas fa-dollar-sign"></i> Meals and The Price For every Meal</h1>
             <input type="text" className="UserInput" name="PriceandMeal" onChange={this.handelUserChange.bind(this)} />
+            <div>{this.state.PriceandMealErr}</div>
 
             <button type="submit" className="ButtonLog" >register</button>
             </form>

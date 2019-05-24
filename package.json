@@ -8,6 +8,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.0",
     "express-pino-logger": "^4.0.0",
+    "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
     "http-proxy": "^1.17.0",
     "jquery": "^3.4.1",
     "jwt-decode": "^2.2.0",
@@ -31,7 +33,6 @@
     "server": "node-env-run server --exec nodemon | pino-colada"
   },
   "proxy": "http://localhost:5000",
-
   "eslintConfig": {
     "extends": "react-app"
   },

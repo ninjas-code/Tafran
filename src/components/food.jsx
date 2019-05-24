@@ -99,12 +99,9 @@ class Food extends React.Component {
     return (
       <BrowserRouter>
         <div className="App">
-
           <header className="App-header">
-
             <form>
-
-
+              <h1>Put The Price</h1>
               <input className="input1"
                 placeholder="Your Budget Here"
                 value={this.state.Price}
@@ -146,10 +143,10 @@ class MealsList extends React.Component {
           <table >
             <thead>
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Age</th>
-                <th>Age</th>
+              <th className="MealsR"><i class="fas fa-utensils"></i>TheRestRunt</th>
+                <th className="MealsR">Meal</th>
+                {/* <th className="MealsR">Age</th> */}
+                <th className="MealsR">Age</th>
               </tr>
             </thead>
             <tbody>
@@ -157,10 +154,11 @@ class MealsList extends React.Component {
                 this.props.meals.map((meal, i) => {
                   return <tr key={i} value={meal} onClick={(event) => this.props.sendRestNameAndPrice(event, meal)}>
 
-                    <td>{meal.restName}</td>
-                    <td>{meal.mealName}</td>
-                    <td>{" the price : "}</td>
-                    <td>{meal.price}{'$'}</td>
+                  {/* <i class="fas fa-utensils"></i> */}
+                  <td className="MealsF">{meal.restName}</td>
+                    <td className="MealsF">{meal.mealName}</td>
+                    {/* <td className="MealsF">{" the price : "}</td> */}
+                    <td className="MealsF">{meal.price}{'$'}</td>
                   </tr>
 
                 })
