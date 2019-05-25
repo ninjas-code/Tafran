@@ -115,10 +115,13 @@ class register extends React.Component{
             <h1 className="UserTitles"><i class="fas fa-store"></i> The Restaurant</h1>
             <input type="text" className="UserInput" name="Restaurant" onChange={this.handelUserChange.bind(this)}required />
             <h1 className="UserTitles"><i class="fas fa-dollar-sign"></i>Restaurant Info</h1>
-            <input type="text" className="UserInput" name="PriceandMeal" onChange={this.handelUserChange.bind(this)} />
+            {/* <input type="text" className="UserInput" name="PriceandMeal" onChange={this.handelUserChange.bind(this)} /> */}
+            <textarea className="TextArea" rows="7" cols="50" placeholder="Restaurant Informations">
+             
+            </textarea>
             <div>{this.state.PriceandMealErr}</div>
 
-            <button type="submit" className="ButtonLog" >register</button>
+            <button type="submit" className="ButtonLog" >Register</button>
             </form>
             </div>
             

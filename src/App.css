@@ -109,6 +109,12 @@ input.input1 {
   margin: 27px 5px;
   font-family: 'Francois One', sans-serif;
 }
+textarea.TextArea{
+  padding:18px;
+  border-radius: 17px;
+  border: 2px;
+
+}
 table.Tabel {
   margin: 0 auto;
 }
