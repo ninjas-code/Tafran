@@ -45,6 +45,7 @@
       "last 1 safari version"
     ]
   },
+  
   "devDependencies": {
     "express-pino-logger": "^4.0.0",
     "node-env-run": "^3.0.2",
