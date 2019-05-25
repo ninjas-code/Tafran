@@ -208,13 +208,7 @@ app.post('/registered', function(req, res,next) {
   req.check('UserName',"Invald Email Plese Try Another One").isEmail();
   req.check('Password',"The Password Should be Numbers").isNumeric().isLength({min:8});
   var err = req.validationErrors();
-  // if(err){
-  //   // req.session.errors = err;
-  //   // req.session.success = false;
-  //   next();
-  // }else{
-  //   req.session.success = true ;
-  // }
+ 
   
   let newRestaurant = {
     Name:req.body.UserName,
