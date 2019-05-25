@@ -259,7 +259,17 @@ app.post('/registered', function(req, res,next) {
     to: `${req.body.UserName}`,
     subject: 'TAFRAN.inc Registerd in TAFRAN',
     text: `Thank You For Registerd We Will Be in Toch With You Soon`,
-    html: `<h1>Hi Smartherd</h1><p>Your Messsage</p>`        
+    html: `<h1 style="color:#000">TAFRAN.inc</h1>
+
+    <h3 style="color:#000">Thank You For Registerd We Will Be in Toch With You Soon</h3>
+    <h1 style="color:#000">More Info About TAFRAN App</h1>
+    <h4 style="color:#000>This App Is to Make your life Easy when You order food You just Put in How much you want to eat and we will</br>
+    take care of the rest we will give you famous restaurnts and none famous restaurnt how have meals under your Budget and You will pick Your favorite</h4></br>
+    <h1 style ="color:#000">Add Your Restaurnt to our Applictaion</h1>
+    <h4 style="color:#000">Your Restaurnt will Be Exposse To thousands of people every day and You can get benefit from this to get new customers and make your business biger.</h4></br>
+    <h1 style="color:#000">Whate the requirements to get your restarunt accepted</h1>
+    <h4 style="color:#000">All You need to have is good restarunt and have a good customer servers and our team will come to you to check every thing and you will be accepted </h4>
+    `        
   };
   
   transporter.sendMail(mailOptions, function(error, info){

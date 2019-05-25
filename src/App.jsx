@@ -8,6 +8,8 @@ import Navgation from './components/Nav.jsx';
 import Login from './components/login.jsx';
 import register from './components/registered.jsx';
 import ThankYouPage from './components/ThankYouPage.jsx';
+import WeclomePage from './components/WelcomePage.jsx';
+
 
 
 //  import MealsList from './components/mealsList.jsx';
@@ -23,6 +25,7 @@ render(){
     <div className="App">
      <BrowserRouter>
       <Navgation/>    
+      <Route path="/welcome" component={WeclomePage} exact />    
       <Route  path="/" component={Food} exact />
         <Route  path="/login" component={Login} exact /> 
         <Route  path="/registered" component={register} exact />
