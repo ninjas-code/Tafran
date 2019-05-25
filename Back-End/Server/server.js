@@ -1,3 +1,4 @@
+
 const express = require('express');
 const app = express();
 const router = express.Router();
@@ -136,7 +137,7 @@ app.get("/CRTable",(req,res)=>{
   })
 })
 
-// Search Into the database   and appear all the data 
+// Search Into the database   and appear all the data /Qusai/
 var users =[];
 app.get("/getUsers",(req,res)=>{
   let serchItem = 'SELECT * FROM meals';
@@ -150,7 +151,7 @@ app.get("/getUsers",(req,res)=>{
     });
 });
 
-// Search Into the database and appear all the data 
+// Search Into the database and appear all the data / Qusai/
 app.get("/getoneUser",(req,res)=>{
   let serchItem = `
   SELECT * 
@@ -182,7 +183,8 @@ connection.connect((err)=>{
 // THE SERVER
 app.use(express.static('public'))
 
-
+// app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
+// To Send the requstes the to FrontEnd
 
 // app.post('/')
 router.get('/UU',(req,res,nxt)=>{
@@ -237,7 +239,39 @@ app.post('/registered', function(req, res,next) {
     console.log("User Was Added")
 
   })
+  // SEND EMAIL START
 
+
+  const nodemailer = require("nodemailer");
+  
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'tafran56@gmail.com',
+      pass: '12345678D!'
+    },tls: {
+      rejectUnauthorized: false
+  }
+  });
+  
+  var mailOptions = {
+    from: 'tafran56@gmail.com',
+    to: `${req.body.UserName}`,
+    subject: 'TAFRAN.inc Registerd in TAFRAN',
+    text: `Thank You For Registerd We Will Be in Toch With You Soon`,
+    html: `<h1>Hi Smartherd</h1><p>Your Messsage</p>`        
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+
+
+  // SEND EMAIL END
   
 res.redirect("http://localhost:3000/ThankYouPage")
 });  
@@ -250,6 +284,7 @@ app.post("/login",function(req,res){
   
   /////////////////////////////////////USER AREA END ////////////////////////////////////////
 
+//app.get('/',(res,req) => res.sendfile('index.html'));
 
 app.get('/',(req,res,next) => res.json({Start:"The First Get"}) );
   

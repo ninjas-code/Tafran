@@ -13,12 +13,9 @@
   
 }
 
-
-
-/* .App-header {
+.App-header {
   
-} */
-
+}
 
 .App-link {
   color: #61dafb;
@@ -32,8 +29,7 @@
     transform: rotate(360deg);
   }
 }
-
-input.input {
+/* input.input {
   padding: 5%;
   width: 66%;
   font-size: 25%;
