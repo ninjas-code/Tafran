@@ -7,16 +7,11 @@ const bodyparser = require('body-parser')
 const mysql = require('mysql');
 var expressValidator = require('express-validator');
 const expressSession = require('express-session')
-// const path = require('path');
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({
   extended: true
 }));
 app.use(expressValidator({save:"Theapp",saveUninitialized:false,resave:false}));
-// to creare the connection
-
-
-
 
 const connection = mysql.createConnection({
     host : 'localhost',
@@ -74,103 +69,6 @@ app.post('/getMealsByPrice',(req,res) =>{
  });
 
 
-// // to creare the connection
-// const connection = mysql.createConnection({
-//     host : 'localhost',
-//     user:'root',
-//     password:"1111",
-//    database: 'fdp' // Change this to Your Data Base Name in Your My SQL Server - Qusai
-// });
-
-// Create DB - qusai
-app.get("/CRDATA",(req,res)=>{
-  let sql = 'CREATE DATABASE if not exists Users'
-  connection.query(sql,(err,result)=>{
-    if(err){
-      throw err
-    };
-    console.log(result);
-    res.send("The Database was created successfully")
-    console.log("Data Base Created")
-    connection.end();
-
-  });
-});
-//create table inside DB
-app.get("/CRTable",(req,res)=>{
-// To Create Tables fotm the server
-  let CreateTable = `CREATE TABLE if not exists restaurants(
-   id int primary key AUTO_INCREMENT,
-   Name VARCHAR(255),
-   address VARCHAR(255),
-   Food VARCHAR(500),
-   Phonenumber int
-   )`
-    connection.query(CreateTable,(err,result)=>{
-      if(err) throw err;
-      console.log(result);
-      console.log("Table Was Created On Successfully")
-      res.send("Table Was Created")
-    })
-  });
-
-  app.get("/price",(req,res)=>{
-    res.send("Done")
-  })
-
-   // Create User Inside The Databasce /* TEST FOR ADMIN ACCOUNT*/
-  app.get("/CN",(req,res)=>{
-  let newRestaurant = {
-    Name:'Qusai',
-    password:"1111",
-    location:"Amman",
-    phonenumber:"07765489",
-    TheRestaurant:"YODu",
-    MealsandPrice:'Hummus 5$'
-  };
-  const added = 'INSERT INTO usersInfo SET ?'
-  connection.query(added,newRestaurant,(err,result)=>{
-    if(err) throw err;
-    console.log(result);
-    res.send("User Was Added")
-
-  })
-})
-
-// Search Into the database   and appear all the data /Qusai/
-var users =[];
-app.get("/getUsers",(req,res)=>{
-  let serchItem = 'SELECT * FROM meals';
- connection.query(serchItem,(err,result,next)=>{
-    if(err) throw err;
-    result.forEach(function(row){
-      users.push(row.name);
-    })
-    console.log(users)
-    res.json(users)
-    });
-});
-
-// Search Into the database and appear all the data / Qusai/
-app.get("/getoneUser",(req,res)=>{
-  let serchItem = `
-  SELECT * 
-  FROM restaurants 
-  WHERE id = 2
-  `
-  connection.query(serchItem,(err,result)=>{
-    if(err) throw err;
-    console.log(result);
-    res.send(result)
-
-  });
-});
-
-
-
-
-
-
 // The connection made
 connection.connect((err)=>{
   if(err){
@@ -183,23 +81,6 @@ connection.connect((err)=>{
 // THE SERVER
 app.use(express.static('public'))
 
-// app.get('/',(req, res) => res.sendFile(path.join(__dirname,"../../public",'index.html')));
-// To Send the requstes the to FrontEnd
-
-// app.post('/')
-router.get('/UU',(req,res,nxt)=>{
-  res.json([{
-    id:1 , 
-    usernname:"Qusai"
-  },{
-    id:2,
-    UserName:"James"
-  }
-]);
-});
-app.get('/TE',(req,res) => res.json({Second:"The Second GEt"}) );
-app.post('/Q',(res,req) => req.json({Hi:"POST"}) );
-
 //////////////////////////////////////// USER AREA//////////////////////////
 app.get('/registered',(req,res)=>{
   res.render('index',{title:"TheUserInfo",success:req.session.success,errors:req.session.errors});
@@ -210,14 +91,7 @@ app.post('/registered', function(req, res,next) {
   req.check('UserName',"Invald Email Plese Try Another One").isEmail();
   req.check('Password',"The Password Should be Numbers").isNumeric().isLength({min:8});
   var err = req.validationErrors();
-  // if(err){
-  //   // req.session.errors = err;
-  //   // req.session.success = false;
-  //   next();
-  // }else{
-  //   req.session.success = true ;
-  // }
-  
+
   let newRestaurant = {
     Name:req.body.UserName,
     password:req.body.Password,
@@ -239,9 +113,8 @@ app.post('/registered', function(req, res,next) {
     console.log("User Was Added")
 
   })
+
   // SEND EMAIL START
-
-
   const nodemailer = require("nodemailer");
   
   var transporter = nodemailer.createTransport({
@@ -266,9 +139,9 @@ app.post('/registered', function(req, res,next) {
     <h4 style="color:#000>This App Is to Make your life Easy when You order food You just Put in How much you want to eat and we will</br>
     take care of the rest we will give you famous restaurnts and none famous restaurnt how have meals under your Budget and You will pick Your favorite</h4></br>
     <h1 style ="color:#000">Add Your Restaurnt to our Applictaion</h1>
-    <h4 style="color:#000">Your Restaurnt will Be Exposse To thousands of people every day and You can get benefit from this to get new customers and make your business biger.</h4></br>
-    <h1 style="color:#000">Whate the requirements to get your restarunt accepted</h1>
-    <h4 style="color:#000">All You need to have is good restarunt and have a good customer servers and our team will come to you to check every thing and you will be accepted </h4>
+    <h4 style="color:#000">Your Restaurnt will Be Exposse To thousands of people every day and You can get benefit from this to get new customers and make your busness biger.</h4></br>
+    <h1 style="color:#000">Whate the requirements to get your restarunt accsepted</h1>
+    <h4 style="color:#000">All You need to have is good restarunt and have a good customer servers and our team will come to you to check every thing and you will be accspted </h4>
     `        
   };
   
@@ -294,7 +167,6 @@ app.post("/login",function(req,res){
   
   /////////////////////////////////////USER AREA END ////////////////////////////////////////
 
-//app.get('/',(res,req) => res.sendfile('index.html'));
 
 app.get('/',(req,res,next) => res.json({Start:"The First Get"}) );
   

@@ -173,83 +173,6 @@ h1.UserTitles {
   margin-top: 2%;
   margin-bottom: 2%;
 }
-/* .HeaderWelcomePage {
-  width: 100%;
-}
-img.HomeImg {
-  height: 326px;
-  width: 100%;
-} */
-/* h1.TheWelcomeTitle {
-  position: absolute;
-  text-align: center;
-  margin-left: 347px;
-  color: #fff;
-  font-family: 'Francois One', sans-serif;
-  margin-top: 105px;
-  background: red;
-  opacity: 1.5;
-} */
-/* .TheWelcomeText {
-  width: 301px;
-  background: red;
-  position: absolute;
-  padding: 25px;
-  margin: 56px;
-  border-radius: 17px;
-  color: #fff;
-  font-family: 'Francois One', sans-serif;
-} */
-/* i.fas.fa-user-circle {
-  font-size: 70px;
-  margin-top: 45px;
-}
-.UsersDiv {
-  background: red;
-  width: 533px;
-  margin: 0 auto;
-  margin-top: 77px;
-}
-#UserWitTie{
-  font-size: 70px;
-  padding-left: 227px;
-  margin-right: -79px;
-  margin-top: 45px;
-
-}
-.WelcomePage {
-  width: 300px;
-}
-.contaner {
-  margin: 0 auto;
-  background: green;
-  float: left;
-  margin-top: 127px;
-  margin-left: 6px;
-}
-h1.HI {
-  display: inline;
-  width: 25px;
-  float: left;
-  margin-left: 472px;
-}
-.fa-user:before {
-  content: "\f007";
-  font-size: 107px;
-}
-#UserTi{
-  font-size: 107px;
-
-}
-p.Para {
-  font-size: 19px;
-  width: 339px;
-  font-family: 'Francois One', sans-serif;
-  margin-left: -145px;
-  background: #000;
-  padding: 25px;
-  color: #fff;
-} */
 div#TheMainHello {
 width:100%;
 }
@@ -281,4 +204,45 @@ p.Para {
 .RE{
   float: left;
   margin: 16px;
+}
+img.Img {
+  /* margin-left: -318px; */
+  width: 100%;
+  max-height: 407px;
+}
+h1.TitlesS {
+  color: #fff;
+  position: absolute;
+  margin: 0 auto;
+  margin-left: 494px;
+  margin-top: 146px;
+  font-family: 'Francois One', sans-serif;
+  font-size: 50px;
+  background: #000;
+  padding: 25px;
+  border-radius: 17px;
+}
+.Buu{
+  padding: 25px;
+  border-radius: 17px;
+  font-size: 26px;
+  border: 0.5px;
+  font-family: 'Francois One', sans-serif;
+  width: 300px;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+#UserTi {
+  font-size: 47px;
+}
+#UserTi1 {
+  font-size: 47px;
+}
+/* #Start{
+  margin-top: 105px;
+} */
+p#NormalUser {
+  padding-bottom: 125px;
 }

@@ -12,10 +12,6 @@ import WeclomePage from './components/WelcomePage.jsx';
 
 
 
-//  import MealsList from './components/mealsList.jsx';
-
-
-
 
 class App extends React.Component {
 
@@ -25,8 +21,8 @@ render(){
     <div className="App">
      <BrowserRouter>
       <Navgation/>    
-      <Route path="/welcome" component={WeclomePage} exact />    
-      <Route  path="/" component={Food} exact />
+      <Route path="/" component={WeclomePage} exact />    
+      <Route  path="/Home" component={Food} exact />
         <Route  path="/login" component={Login} exact /> 
         <Route  path="/registered" component={register} exact />
         <Route path="/ThankYouPage" component={ThankYouPage} exact />    

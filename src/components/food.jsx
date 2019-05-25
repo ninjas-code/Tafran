@@ -185,7 +185,7 @@ class Resturant extends React.Component {
             <thead>
               <tr>
                 <th className="restaurnt4">Resturant Name</th>
-                <th className="restaurnt4">Meal</th>
+                <th className="restaurnt4">Phone Number</th>
                 <th className="restaurnt4">Address</th>
               </tr>
             </thead>
