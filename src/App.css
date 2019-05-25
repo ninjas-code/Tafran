@@ -184,3 +184,7 @@ h1.UserTitles {
   margin-top: 2%;
 }
 
+input.required {
+  border:2px solid tomato;
+  width: 32%;
+}
