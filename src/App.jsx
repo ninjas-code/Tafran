@@ -5,7 +5,7 @@ import { BrowserRouter , Route } from 'react-router-dom';
 import Food from './components/food.jsx';
 // import Err from './components/404Page.jsx';
 import Navgation from './components/Nav.jsx';
-import Login from './components/login.jsx';
+// import Login from './components/login.jsx';
 import register from './components/registered.jsx';
 import ThankYouPage from './components/ThankYouPage.jsx';
 
@@ -24,7 +24,7 @@ render(){
      <BrowserRouter>
       <Navgation/>    
       <Route  path="/" component={Food} exact />
-        <Route  path="/login" component={Login} exact /> 
+        {/* <Route  path="/login" component={Login} exact />  */}
         <Route  path="/registered" component={register} exact />
         <Route path="/ThankYouPage" component={ThankYouPage} exact />    
      </BrowserRouter>
