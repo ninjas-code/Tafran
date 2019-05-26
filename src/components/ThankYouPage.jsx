@@ -1,5 +1,7 @@
 import React from "react";
 import {browseRoute} from 'react-router-dom';
+
+
 class ThankYouPage extends React.Component{
 
     render(){
@@ -11,6 +13,9 @@ class ThankYouPage extends React.Component{
             <h3>We Will Be in Touch With You Soon </h3>
             
             </div>
+            
+
+
             </div>
             
         )

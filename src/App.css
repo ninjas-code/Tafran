@@ -13,9 +13,9 @@
   
 }
 
-/* .App-header {
+.App-header {
   
-} */
+}
 
 .App-link {
   color: #61dafb;
@@ -29,8 +29,7 @@
     transform: rotate(360deg);
   }
 }
-
-input.input {
+/* input.input {
   padding: 5%;
   width: 66%;
   font-size: 25%;
@@ -60,8 +59,6 @@ button.button {
   padding: 12px;
   font-family: 'Francois One', sans-serif;
   transition: 80ms;
-  margin-top: 2%;
-
   
 }
 .MealsF {
@@ -109,12 +106,6 @@ input.input1 {
   margin: 27px 5px;
   font-family: 'Francois One', sans-serif;
 }
-textarea.TextArea{
-  padding:18px;
-  border-radius: 17px;
-  border: 2px;
-
-}
 table.Tabel {
   margin: 0 auto;
 }
@@ -148,7 +139,6 @@ td.restaurnt5 {
   border-radius: 19px;
     font-size: 19px;
     padding: 30px;
-    margin-top: 2%;
 
 }
 h1.UserTitles {
@@ -178,16 +168,81 @@ h1.UserTitles {
   padding: 14px;
   text-decoration: none;
   color: #000;
-  margin-top: 2%;
 }
 .NaV {
   margin-top: 2%;
+  margin-bottom: 2%;
 }
-
-input.required {
-  border:2px solid tomato;
-  width: 32%;
+div#TheMainHello {
+width:100%;
 }
-:required {
-  
+h1.HI {
+  width: 300px;
+  float: left;
+  display: inline;
+  margin: 25px;
+}
+p.Para {
+  background: #000;
+  color: #fff;
+  border-radius: 17px;
+  padding: 25px;
+  font-size: 15px;
+}
+.AlUsers{
+  width: 714px;
+  margin: 0 auto;
+}
+.Reviws {
+  float: left;
+  background: #000;
+  width: 16%;
+  border-radius: 23px;
+  color: #fff;
+  width: 100%;
+}
+.RE{
+  float: left;
+  margin: 16px;
+}
+img.Img {
+  /* margin-left: -318px; */
+  width: 100%;
+  max-height: 407px;
+}
+h1.TitlesS {
+  color: #fff;
+  position: absolute;
+  margin: 0 auto;
+  margin-left: 494px;
+  margin-top: 146px;
+  font-family: 'Francois One', sans-serif;
+  font-size: 50px;
+  background: #000;
+  padding: 25px;
+  border-radius: 17px;
+}
+.Buu{
+  padding: 25px;
+  border-radius: 17px;
+  font-size: 26px;
+  border: 0.5px;
+  font-family: 'Francois One', sans-serif;
+  width: 300px;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+#UserTi {
+  font-size: 47px;
+}
+#UserTi1 {
+  font-size: 47px;
+}
+/* #Start{
+  margin-top: 105px;
+} */
+p#NormalUser {
+  padding-bottom: 125px;
 }

@@ -2,10 +2,9 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 // import $ from 'jquery'; 
 import "../App.css"
+// import { userInfo } from 'os';
 
-
-
-// Don't Touch this 
+// Don't Touch this /Qusai/
 const url = "http://localhost:5000/"; 
 fetch(url)
 .then(response => response.text())
@@ -48,7 +47,10 @@ class Food extends React.Component {
   sendRestNameAndPrice(e, mealObj) {
     e.preventDefault();
 
-  
+    // var body = {
+    //   price: this.state.Price,
+    //   name : this.state.Name
+    // }
     console.log(mealObj);
 
     fetch('http://localhost:5000/getRest', {
@@ -111,7 +113,7 @@ class Food extends React.Component {
 
 
 
-             
+              {/* {!this.state.isHidden && <MealsList meals ={[{name:'meal1',price:2, resturant: 'Bab-Alyamen'},{name:'meal2',price:4, resturant: 'Bab-Alyamen'},{name:'meal3',price:3, resturant: 'Jabri'},{name:'meal4',price:5, resturant: 'AAlya'}]} />} */}
               {this.state.dispalyMealList ?
                 <MealsList meals={this.state.meals} sendRestNameAndPrice={this.sendRestNameAndPrice.bind(this)} /> :
                 null
@@ -143,7 +145,7 @@ class MealsList extends React.Component {
               <tr>
               <th className="MealsR"><i class="fas fa-utensils"></i>TheRestRunt</th>
                 <th className="MealsR">Meal</th>
-                
+                {/* <th className="MealsR">Age</th> */}
                 <th className="MealsR">Price</th>
               </tr>
             </thead>
@@ -152,10 +154,10 @@ class MealsList extends React.Component {
                 this.props.meals.map((meal, i) => {
                   return <tr key={i} value={meal} onClick={(event) => this.props.sendRestNameAndPrice(event, meal)}>
 
-                  
+                  {/* <i class="fas fa-utensils"></i> */}
                   <td className="MealsF">{meal.restName}</td>
                     <td className="MealsF">{meal.mealName}</td>
-                   
+                    {/* <td className="MealsF">{" the price : "}</td> */}
                     <td className="MealsF">{meal.price}{' JD'}</td>
                   </tr>
 
@@ -183,7 +185,7 @@ class Resturant extends React.Component {
             <thead>
               <tr>
                 <th className="restaurnt4">Resturant Name</th>
-                <th className="restaurnt4">Meal</th>
+                <th className="restaurnt4">Phone Number</th>
                 <th className="restaurnt4">Address</th>
               </tr>
             </thead>
