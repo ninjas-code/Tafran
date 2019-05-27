@@ -1,33 +1,27 @@
 .App {
-  text-align: center;
-  
- 
+	text-align: center;
 }
 
-
 .App-logo {
-  
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-  
+	animation: App-logo-spin infinite 20s linear;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 .App-header {
-  
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 /* input.input {
   padding: 5%;
@@ -37,212 +31,209 @@
 } */
 
 button.button {
-  padding: 25px;
-  margin: 10px;
-  width: 36%;
-  font-size: 30px;
-  
+	padding: 25px;
+	margin: 10px;
+	width: 36%;
+	font-size: 30px;
 }
-.lodding{
-  max-width: 350px;
+.lodding {
+	max-width: 350px;
 }
 .ThankYouPage {
-  width: 50%;
-  margin: 0 AUTO;
-  padding: 25px;
-  border: 0.1px solid;
-  border-radius: 25px;
-  margin-top: 24px;
-  background: #ffb700;
-  border: 0.1px solid;
-  border-radius: 17px;
-  padding: 12px;
-  font-family: 'Francois One', sans-serif;
-  transition: 80ms;
-  
+	width: 50%;
+	margin: 0 AUTO;
+	padding: 25px;
+	border: 0.1px solid;
+	border-radius: 25px;
+	margin-top: 24px;
+	background: #ffb700;
+	border: 0.1px solid;
+	border-radius: 17px;
+	padding: 12px;
+	font-family: 'Francois One', sans-serif;
+	transition: 80ms;
 }
 .MealsF {
-  margin: 8px;
-  /* background: red; */
-  margin-bottom: 14px;
-  padding: 14px;
-  color: #fff;
-  font-size: 24px;
-  font-family: 'Francois One', sans-serif;
+	margin: 8px;
+	/* background: red; */
+	margin-bottom: 14px;
+	padding: 14px;
+	color: #fff;
+	font-size: 24px;
+	font-family: 'Francois One', sans-serif;
 }
 .TheMainInfo {
-  margin-top: 19px;
-    background: #000;
-    color: #fff;
-    padding: 25px;
-    border-radius: 17px;
-    width: 53%;
-    margin: 0 auto;
-    margin-top: 29px;
-    /* margin-left: 15%; */
+	margin-top: 19px;
+	background: #000;
+	color: #fff;
+	padding: 25px;
+	border-radius: 17px;
+	width: 53%;
+	margin: 0 auto;
+	margin-top: 29px;
+	/* margin-left: 15%; */
 }
 th.MealsR {
-  color: #fff;
-  font-family: 'Francois One', sans-serif;
-
+	color: #fff;
+	font-family: 'Francois One', sans-serif;
 }
-.fa, .fas {
-  font-weight: 900;
-  margin-right: 7px;
+.fa,
+.fas {
+	font-weight: 900;
+	margin-right: 7px;
 }
 input.input1 {
-  padding: 32px;
-  border-radius: 50px;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border: 5px solid #71db76;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 45%;
-  text-align: center;
-  font-size: 29px;
-  margin: 27px 5px;
-  font-family: 'Francois One', sans-serif;
+	padding: 32px;
+	border-radius: 50px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border: 5px solid #71db76;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 45%;
+	text-align: center;
+	font-size: 29px;
+	margin: 27px 5px;
+	font-family: 'Francois One', sans-serif;
 }
 table.Tabel {
-  margin: 0 auto;
+	margin: 0 auto;
 }
 .search1 {
-  background-color: #fff;
-  border: none;
-  color: rgb(113, 219, 119);
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 26px;
+	background-color: #fff;
+	border: none;
+	color: rgb(113, 219, 119);
+	padding: 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 26px;
 }
 .fa-search:before {
-  content: "\f002";
-  font-size: 39px;
+	content: "\f002";
+	font-size: 39px;
 }
 td.restaurnt5 {
-  font-weight: 400;
-  padding: 18px;
+	font-weight: 400;
+	padding: 18px;
 }
 
 .UserHeader {
-  background: #ffb700;
-  width: 400px;
-  margin: 0 auto;
-  border: 0.1px solid;
-  border-radius: 19px;
-    font-size: 19px;
-    padding: 30px;
-
+	background: #ffb700;
+	width: 400px;
+	margin: 0 auto;
+	border: 0.1px solid;
+	border-radius: 19px;
+	font-size: 19px;
+	padding: 30px;
 }
 h1.UserTitles {
-  font-size: 18px;
+	font-size: 18px;
 }
 .fas {
-  font-weight: 900;
-  margin-right: 7px;
-  font-size: 21px;
+	font-weight: 900;
+	margin-right: 7px;
+	font-size: 21px;
 }
 .UserInput {
-  padding: 7px;
-  border-radius: 17px;
-  border: 0.2px;
+	padding: 7px;
+	border-radius: 17px;
+	border: 0.2px;
 }
 .ButtonLog {
-  margin-top: 19px;
-  margin-bottom: 6px;
-  border-radius: 17px;
-  width: 32%;
-  border: 0.1px;
-  font-size: 23px;
-  font-family: 'Francois One', sans-serif;
+	margin-top: 19px;
+	margin-bottom: 6px;
+	border-radius: 17px;
+	width: 32%;
+	border: 0.1px;
+	font-size: 23px;
+	font-family: 'Francois One', sans-serif;
 }
-.SignUp{
-  font-size: 20px;
-  padding: 14px;
-  text-decoration: none;
-  color: #000;
+.SignUp {
+	font-size: 20px;
+	padding: 14px;
+	text-decoration: none;
+	color: #000;
 }
 .NaV {
-  margin-top: 2%;
-  margin-bottom: 2%;
+	margin-top: 2%;
+	margin-bottom: 2%;
 }
 div#TheMainHello {
-width:100%;
+	width: 100%;
 }
 h1.HI {
-  width: 300px;
-  float: left;
-  display: inline;
-  margin: 25px;
+	width: 300px;
+	float: left;
+	display: inline;
+	margin: 25px;
 }
 p.Para {
-  background: #000;
-  color: #fff;
-  border-radius: 17px;
-  padding: 25px;
-  font-size: 15px;
+	background: #000;
+	color: #fff;
+	border-radius: 17px;
+	padding: 25px;
+	font-size: 15px;
 }
-.AlUsers{
-  width: 714px;
-  margin: 0 auto;
+.AlUsers {
+	width: 714px;
+	margin: 0 auto;
 }
 .Reviws {
-  float: left;
-  background: #000;
-  width: 16%;
-  border-radius: 23px;
-  color: #fff;
-  width: 100%;
+	float: left;
+	background: #000;
+	width: 16%;
+	border-radius: 23px;
+	color: #fff;
+	width: 100%;
 }
-.RE{
-  float: left;
-  margin: 16px;
+.RE {
+	float: left;
+	margin: 16px;
 }
 img.Img {
-  /* margin-left: -318px; */
-  width: 100%;
-  max-height: 407px;
+	/* margin-left: -318px; */
+	width: 100%;
+	max-height: 407px;
 }
 h1.TitlesS {
-  color: #fff;
-  position: absolute;
-  margin: 0 auto;
-  margin-left: 494px;
-  margin-top: 146px;
-  font-family: 'Francois One', sans-serif;
-  font-size: 50px;
-  background: #000;
-  padding: 25px;
-  border-radius: 17px;
+	color: #fff;
+	position: absolute;
+	margin: 0 auto;
+	margin-left: 494px;
+	margin-top: 146px;
+	font-family: 'Francois One', sans-serif;
+	font-size: 50px;
+	background: #000;
+	padding: 25px;
+	border-radius: 17px;
 }
-.Buu{
-  padding: 25px;
-  border-radius: 17px;
-  font-size: 26px;
-  border: 0.5px;
-  font-family: 'Francois One', sans-serif;
-  width: 300px;
+.Buu {
+	padding: 25px;
+	border-radius: 17px;
+	font-size: 26px;
+	border: 0.5px;
+	font-family: 'Francois One', sans-serif;
+	width: 300px;
 }
 a {
-  text-decoration: none;
-  color: #000;
+	text-decoration: none;
+	color: #000;
 }
 #UserTi {
-  font-size: 47px;
+	font-size: 47px;
 }
 #UserTi1 {
-  font-size: 47px;
+	font-size: 47px;
 }
 /* #Start{
   margin-top: 105px;
 } */
 p#NormalUser {
-  padding-bottom: 125px;
+	padding-bottom: 125px;
 }
