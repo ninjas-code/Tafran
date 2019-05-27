@@ -4,25 +4,33 @@ angular.module( "app" ,['ngRoute'])
 
   $routeProvider
 
-
  .when("/",{
     templateUrl:"./WelcomePage.html",
 })
 
  .when("/signup",{
-    templateUrl:"./signup.html"
-    // controller:"signup"
+    templateUrl:"./signup.html",
+    controller : "signup"
 })
+
+
+.when("/food",{
+  templateUrl:"./food.html",
+  controller : "food"
+})
+
 
 .when("/signin", {
   templateUrl:"./signin.html",
-  // controller: "signin"
+  controller: "signin"
 })
 
 
 .when("/ThankYouPage",{
   templateUrl:"./ThankYouPage.html",
-})})
+})
+})
+
 
 // .controller("food",function($scope,$http,$location,$rootScope){
 //   console.log("hi")
