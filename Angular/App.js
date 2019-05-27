@@ -13,6 +13,13 @@ angular.module( "app" ,['ngRoute'])
     controller : "signup"
 })
 
+
+.when("/food",{
+  templateUrl:"./food.html",
+  controller : "food"
+})
+
+
 .when("/signin", {
   templateUrl:"./signin.html",
   controller: "signin"
