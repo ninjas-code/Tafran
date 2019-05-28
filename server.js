@@ -36,7 +36,6 @@ app.use(function(req, res, next) {
 // getting the price from frontEnd and send the meals back
 app.post('/getMealsByPrice', (req, res) => {
 	const price = req.body.price;
-
 	let serchItem =
 		`SELECT  m.name as mealName,r.name as restName,mt.size, price,r.id as restId
     FROM restmealmenue rmm
@@ -74,14 +73,14 @@ app.post('/getRest', (req, res) => {
 
 // The connection made
 connection.connect((err) => {
-	if (err) {
-		console.log('There is a error :', err);
-	}
-	console.log('The Conection made Successfully');
+	// if (err) {
+	// 	console.log('There is a error :', err);
+	// }
+	console.log('The db Conection made Successfully');
 });
 
 // THE SERVER
-app.use(express.static('public'));
+app.use(express.static('Angular'));
 
 //////////////////////////////////////// USER AREA//////////////////////////
 app.get('/registered', (req, res) => {
@@ -167,7 +166,7 @@ app.post('/login', function(req, res) {
 
 /////////////////////////////////////USER AREA END ////////////////////////////////////////
 
-app.get('/', (req, res, next) => res.json({ Start: 'The First Get' }));
+// app.get('/', (req, res, next) => res.json({ Start: 'The First Get' }));
 
 module.exports = router;
 app.listen(PORT, () => console.log('The Server is working on ' + PORT));
