@@ -1,4 +1,4 @@
-angular.module( "app" ,['ngRoute'])
+angular.module( "app" ,['ui.bootstrap','ngRoute'])
 
 .config(function($routeProvider){
 
@@ -7,7 +7,9 @@ angular.module( "app" ,['ngRoute'])
  .when("/",{
     templateUrl:"./WelcomePage.html",
 })
-
+.when("/about",{
+  templateUrl:"./about.html",
+})
  .when("/signup",{
     templateUrl:"./signup.html",
     controller : "signup"
@@ -32,18 +34,4 @@ angular.module( "app" ,['ngRoute'])
 })
 
 
-// .controller("food",function($scope,$http,$location,$rootScope){
-//   console.log("hi")
-  
-//     })
-    
-//   headers: {'Content-Type': "application/json"}
-//   }).then(function(response){
-//           $rootScope.data = response.data[0]
-//           $location.path("/profile")
-          
-//   }).catch(function(){
-//     console.log('big error')
-//   })
-// }
 
