@@ -84,30 +84,6 @@ connection.connect((err) => {
 	console.log('The db Conection made Successfully');
 });
 
-// app.post('/getRest', (req, res) => {
-// 	const restId = req.body.restId;
-// 	let serchItem =
-// 		`SELECT r.name, phone, address
-//     FROM restaurants r
-//     Where r.Id = N'` +
-// 		restId +
-// 		`'`;
-
-// 	connection.query(serchItem, (err, result) => {
-// 		if (err) throw err;
-// 		console.log(result);
-// 		res.send(result);
-// 	});
-// });
-
-// // The connection made
-// connection.connect((err) => {
-// 	if (err) {
-// 		console.log('There is a error :', err);
-// 	}
-// 	console.log('The Conection made Successfully');
-// });
-
 // THE SERVER
 app.use(express.static('Angular'));
 
@@ -116,6 +92,7 @@ app.use(express.static('Angular'));
 // 	res.render('index', { title: 'TheUserInfo', success: req.session.success, errors: req.session.errors });
 // 	req.session.errors = null;
 // });
+
 app.post('/registered', function(req, res, next) {
 	const User = req.body.price;
 	// req.check('UserName', 'Invald Email Plese Try Another One').isEmail();
