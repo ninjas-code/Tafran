@@ -55,7 +55,6 @@ app.post('/getMealsByPrice', (req, res) => {
 });
 
 // getting the meal from frondEnd and send the restauransts back
-<<<<<<< HEAD:server.js
 app.post('/getRest', (req, res) => {
 	const restId = req.body.restId;
 	let serchItem =
@@ -79,31 +78,6 @@ connection.connect((err) => {
 	// }
 	console.log('The db Conection made Successfully');
 });
-=======
-// app.post('/getRest', (req, res) => {
-// 	const restId = req.body.restId;
-// 	let serchItem =
-// 		`SELECT r.name, phone, address
-//     FROM restaurants r
-//     Where r.Id = N'` +
-// 		restId +
-// 		`'`;
-
-// 	connection.query(serchItem, (err, result) => {
-// 		if (err) throw err;
-// 		console.log(result);
-// 		res.send(result);
-// 	});
-// });
-
-// // The connection made
-// connection.connect((err) => {
-// 	if (err) {
-// 		console.log('There is a error :', err);
-// 	}
-// 	console.log('The Conection made Successfully');
-// });
->>>>>>> aa4aaabbd94d8bdde43970a6ab21c9eb0977589f:server.js
 
 // THE SERVER
 app.use(express.static('Angular'));
@@ -113,7 +87,6 @@ app.get('/registered', (req, res) => {
 	res.render('index', { title: 'TheUserInfo', success: req.session.success, errors: req.session.errors });
 
 	req.session.errors = null;
-
 });
 app.post('/registered', function(req, res, next) {
 	const User = req.body.price;
