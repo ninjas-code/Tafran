@@ -63,7 +63,7 @@ app.post('/getRest', (req, res) => {
     Where r.Id = N'` +
 		restId +
 		`'`;
-
+	console.log(restId);
 	connection.query(serchItem, (err, result) => {
 		if (err) throw err;
 		console.log(result);
