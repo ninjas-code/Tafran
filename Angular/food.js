@@ -1,39 +1,37 @@
-angular.module( "app")
-.controller("food",function($scope,$http){
-  $scope.mealsInfo;
-  $scope.budget = function(){
-		//console.log($scope.username)
+angular.module('app').controller('food', function($scope, $http, $location, $rootScope) {
+	$scope.meals;
+	$scope.search = function() {
 		$http({
-			method:'post',
-      url:'/getMealsByPrice',
-     	data:	{"price": $scope.priceInfo},
-		headers: {'Content-Type': "application/json; charset = utf-8"}
-    }).then( (data)=>{
-      $scope.mealsInfo = data.data;
-      console.log($scope.mealsInfo)
-
-    }).catch( (error) =>{
-			console.log(error)
+			method: 'post',
+			url: '/getMealsByPrice',
+			data: JSON.stringify({
+				price: $scope.input
+			}),
+			headers: { 'Content-Type': 'application/json' }
 		})
-}
+			.then(function(response) {
+				console.log(response.data);
+				$scope.meals = response.data;
+			})
+			.catch(function(error) {
+				console.log(error);
+			});
+	};
 
-  // $scope.restDescribtion = function(){
-
-  // }
-  // $scope.mealsInfo;
-  // console.log($scope.priceInfo)
-  // function getMealsData(){
-  //   return $http.get('./data.json')
-  // }
-
-  // getMealsData().then( (data)=>{
-  //   $scope.mealsInfo = data.data 
-  //   console.log($scope.mealsInfo)
-  // }).catch((error)=>{
-  //   console.log(error)
-  // })
-
-  
-  
-})
-
+	// $scope.showInfo = function() {
+	// 	$http({
+	// 		method: 'post',
+	// 		url: '/getRest',
+	// 		data: JSON.stringify({
+	// 			info: $scope.meal.restId
+	// 		}),
+	// 		headers: { 'Content-Type': 'application/json' }
+	// 	})
+	// 		.then(function(result) {
+	// 			console.log(result);
+	// 		})
+	// 		.catch(function(error) {
+	// 			console.log(error);
+	// 		});
+	// };
+});

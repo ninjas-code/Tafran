@@ -36,7 +36,6 @@ app.use(function(req, res, next) {
 // getting the price from frontEnd and send the meals back
 app.post('/getMealsByPrice', (req, res) => {
 	const price = req.body.price;
-
 	let serchItem =
 		`SELECT  m.name as mealName,r.name as restName,mt.size, price,r.id as restId
     FROM restmealmenue rmm
@@ -67,7 +66,7 @@ app.post('/getRest', (req, res) => {
     Where r.Id = N'` +
 		restId +
 		`'`;
-
+	console.log(restId);
 	connection.query(serchItem, (err, result) => {
 		if (err){
 			console.log(err)
@@ -78,6 +77,30 @@ app.post('/getRest', (req, res) => {
 });
 
 // The connection made
+connection.connect((err) => {
+	// if (err) {
+	// 	console.log('There is a error :', err);
+	// }
+	console.log('The db Conection made Successfully');
+});
+
+// app.post('/getRest', (req, res) => {
+// 	const restId = req.body.restId;
+// 	let serchItem =
+// 		`SELECT r.name, phone, address
+//     FROM restaurants r
+//     Where r.Id = N'` +
+// 		restId +
+// 		`'`;
+
+// 	connection.query(serchItem, (err, result) => {
+// 		if (err) throw err;
+// 		console.log(result);
+// 		res.send(result);
+// 	});
+// });
+
+// // The connection made
 // connection.connect((err) => {
 // 	if (err) {
 // 		console.log('There is a error :', err);
@@ -95,8 +118,8 @@ app.use(express.static('Angular'));
 // });
 app.post('/registered', function(req, res, next) {
 	const User = req.body.price;
-	req.check('UserName', 'Invald Email Plese Try Another One').isEmail();
-	req.check('Password', 'The Password Should be Numbers').isNumeric().isLength({ min: 8 });
+	// req.check('UserName', 'Invald Email Plese Try Another One').isEmail();
+	// req.check('Password', 'The Password Should be Numbers').isNumeric().isLength({ min: 8 });
 	var err = req.validationErrors();
 
 	let newRestaurant = {
@@ -107,10 +130,10 @@ app.post('/registered', function(req, res, next) {
 		TheRestaurant: req.body.Restaurant,
 		MealsandPrice: req.body.PriceandMeal
 	};
-	const Check = `SELECT * From userInfo Where Name = ${req.body.UserName}`;
-	const added = 'INSERT INTO usersInfo SET ?';
+	// const Check = `SELECT * From userInfo Where Name = ${req.body.UserName}`;
+	// const added = 'INSERT INTO usersInfo SET ?';
 
-	console.log(Check);
+	console.log(newRestaurant);
 
 	UsersConection.query(added, newRestaurant, (err, result) => {
 		console.log(newRestaurant);
