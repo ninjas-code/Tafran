@@ -28,11 +28,11 @@
     "webpack-dev-server": "^3.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node-env-run server --exec nodemon | pino-colada"
+    "start": "nodemon server.js"
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {

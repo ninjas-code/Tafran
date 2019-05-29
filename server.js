@@ -1,17 +1,17 @@
 const express = require('express');
 const app = express();
+var cors = require('cors')
 const router = express.Router();
 const PORT = 5000;
 const bodyparser = require('body-parser');
 const mysql = require('mysql');
 var expressValidator = require('express-validator');
 const expressSession = require('express-session');
+
+app.use(cors())
 app.use(bodyparser.json());
-app.use(
-	bodyparser.urlencoded({
-		extended: true
-	})
-);
+app.use(bodyparser.urlencoded({	extended: true }));
+
 app.use(expressValidator({ save: 'Theapp', saveUninitialized: false, resave: false }));
 
 const connection = mysql.createConnection({
@@ -49,9 +49,12 @@ app.post('/getMealsByPrice', (req, res) => {
     order by m.name, r.name, mt.size, price`;
 
 	connection.query(serchItem, (err, result) => {
-		if (err) throw err;
-		console.log(result);
-		res.send(result);
+		if(result){
+			return res.send(result);
+		}
+		if (err){
+			console.log(err)
+		}
 	});
 });
 
@@ -66,28 +69,30 @@ app.post('/getRest', (req, res) => {
 		`'`;
 
 	connection.query(serchItem, (err, result) => {
-		if (err) throw err;
+		if (err){
+			console.log(err)
+		} 
 		console.log(result);
 		res.send(result);
 	});
 });
 
 // The connection made
-connection.connect((err) => {
-	if (err) {
-		console.log('There is a error :', err);
-	}
-	console.log('The Conection made Successfully');
-});
+// connection.connect((err) => {
+// 	if (err) {
+// 		console.log('There is a error :', err);
+// 	}
+// 	console.log('The Conection made Successfully');
+// });
 
 // THE SERVER
-app.use(express.static('public'));
+app.use(express.static('Angular'));
 
 //////////////////////////////////////// USER AREA//////////////////////////
-app.get('/registered', (req, res) => {
-	res.render('index', { title: 'TheUserInfo', success: req.session.success, errors: req.session.errors });
-	req.session.errors = null;
-});
+// app.get('/registered', (req, res) => {
+// 	res.render('index', { title: 'TheUserInfo', success: req.session.success, errors: req.session.errors });
+// 	req.session.errors = null;
+// });
 app.post('/registered', function(req, res, next) {
 	const User = req.body.price;
 	req.check('UserName', 'Invald Email Plese Try Another One').isEmail();
@@ -160,14 +165,27 @@ app.post('/registered', function(req, res, next) {
 });
 
 app.post('/login', function(req, res) {
-	console.log(req.body.UserName);
-	const Find = 'select'`+re+`;
-	res.send('Hi');
+	var username = req.body.UserName;
+	var password = req.body.Password;
+	//const Find = 'select'`+re+`;
+	const user = "SELECT * From usersInfo Where Name =  '" + username + "' and Password = '"+password +"'";
+	
+	connection.query(user, (err, result) => {
+		if(result){
+			console.log(result)
+			return res.send(result);
+		}
+		if (err){
+			console.log(err)
+		}
+	});
+
+	//res.send('Hi');
 });
 
 /////////////////////////////////////USER AREA END ////////////////////////////////////////
 
-app.get('/', (req, res, next) => res.json({ Start: 'The First Get' }));
+// app.get('/', (req, res, next) => res.json({ Start: 'The First Get' }));
 
 module.exports = router;
 app.listen(PORT, () => console.log('The Server is working on ' + PORT));

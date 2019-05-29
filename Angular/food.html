@@ -1,1 +1,30 @@
-<h1>food</h1>
+<body ng-app="app" ng-controller="food" >
+ 
+  <div class="container">
+  <h1>food</h1>
+  <div class="well text-center" >
+      <input class="form-control form-control-sm mr-3 w-75" ng-model="priceInfo" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-primary" ng-click="budget()">search  </button>  
+  </div>
+
+  <div class="col-sm-8" style="margin-top: 20px; margin-left: 50px; size: 20px"  id='info' class='well' ng-repeat='meal in mealsInfo '>
+      <pre><h4><strong> resturent name :  </strong> {{ meal.restName }} 
+      <strong> Meal  :  </strong> {{ meal.mealName }} 
+      <strong> Size :  </strong> {{ meal.size}}  
+      <strong> Price :  </strong> {{ meal.price | currency }}  
+       <button  ng-click="restDescribtion()" ng-click="showDescribtion = !showDescribtion"  class='btn btn-success' >show Describtion</button></h4></pre> 
+      </h4></pre>
+    </div>
+    <!-- show resturent describtion -->
+    <!-- <div ng-show="showDescribtion = true"  class="col-sm-8"  class='well' ng-repeat='meal in mealsInfo '>
+      <pre><h4><strong> resturent name :  </strong> {{ meal.restName }} 
+      <strong> Meal  :  </strong> {{ meal.mealName }} 
+      <strong> Size :  </strong> {{ meal.size}}  
+      <strong> Price :  </strong> {{ meal.price | currency }}   
+      </h4></pre>
+    </div> -->
+
+  <script src="App.js"></script>
+  <script src="food.js"></script>
+</div>
+</body> 

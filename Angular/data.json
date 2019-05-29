@@ -1,0 +1,33 @@
+[
+  {
+      "resturant": "Al Hanayen",
+      "meal": "shawarma arabic",
+      "price": 5,
+      "describtion": "this returent in jabal amman near circle two"
+  },
+  {
+      "resturant": "Hashem",
+      "meal": "Broasted",
+      "price": 6,
+      "describtion": "this returent in down town near abu jabara"
+  },
+  {
+      "resturant": "Ghazal",
+      "meal": "Burger",
+      "price": 3,
+      "describtion": "this returent in abdalla alchosheh street near circle seven"
+  },
+  {
+      "resturant": "Ghazal",
+      "meal": "Zinger",
+      "price": 2,
+      "describtion": "this returent in abdalla alchosheh street near circle seven"
+  },
+  {
+      "resturant": "KFC",
+      "meal": "Burger",
+      "price": 2,
+      "describtion": "this returent in abdalla alchosheh street near circle seven"
+  }
+
+]
