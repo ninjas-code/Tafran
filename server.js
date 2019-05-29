@@ -56,42 +56,44 @@ app.post('/getMealsByPrice', (req, res) => {
 });
 
 // getting the meal from frondEnd and send the restauransts back
-app.post('/getRest', (req, res) => {
-	const restId = req.body.restId;
-	let serchItem =
-		`SELECT r.name, phone, address
-    FROM restaurants r
-    Where r.Id = N'` +
-		restId +
-		`'`;
+// app.post('/getRest', (req, res) => {
+// 	const restId = req.body.restId;
+// 	let serchItem =
+// 		`SELECT r.name, phone, address
+//     FROM restaurants r
+//     Where r.Id = N'` +
+// 		restId +
+// 		`'`;
 
-	connection.query(serchItem, (err, result) => {
-		if (err) throw err;
-		console.log(result);
-		res.send(result);
-	});
-});
+// 	connection.query(serchItem, (err, result) => {
+// 		if (err) throw err;
+// 		console.log(result);
+// 		res.send(result);
+// 	});
+// });
 
-// The connection made
-connection.connect((err) => {
-	if (err) {
-		console.log('There is a error :', err);
-	}
-	console.log('The Conection made Successfully');
-});
+// // The connection made
+// connection.connect((err) => {
+// 	if (err) {
+// 		console.log('There is a error :', err);
+// 	}
+// 	console.log('The Conection made Successfully');
+// });
 
 // THE SERVER
-app.use(express.static('public'));
+app.use(express.static('Angular'));
 
 //////////////////////////////////////// USER AREA//////////////////////////
 app.get('/registered', (req, res) => {
 	res.render('index', { title: 'TheUserInfo', success: req.session.success, errors: req.session.errors });
+
 	req.session.errors = null;
+
 });
 app.post('/registered', function(req, res, next) {
 	const User = req.body.price;
-	req.check('UserName', 'Invald Email Plese Try Another One').isEmail();
-	req.check('Password', 'The Password Should be Numbers').isNumeric().isLength({ min: 8 });
+	// req.check('UserName', 'Invald Email Plese Try Another One').isEmail();
+	// req.check('Password', 'The Password Should be Numbers').isNumeric().isLength({ min: 8 });
 	var err = req.validationErrors();
 
 	let newRestaurant = {
@@ -102,10 +104,10 @@ app.post('/registered', function(req, res, next) {
 		TheRestaurant: req.body.Restaurant,
 		MealsandPrice: req.body.PriceandMeal
 	};
-	const Check = `SELECT * From userInfo Where Name = ${req.body.UserName}`;
-	const added = 'INSERT INTO usersInfo SET ?';
+	// const Check = `SELECT * From userInfo Where Name = ${req.body.UserName}`;
+	// const added = 'INSERT INTO usersInfo SET ?';
 
-	console.log(Check);
+	console.log(newRestaurant);
 
 	UsersConection.query(added, newRestaurant, (err, result) => {
 		console.log(newRestaurant);
@@ -167,7 +169,7 @@ app.post('/login', function(req, res) {
 
 /////////////////////////////////////USER AREA END ////////////////////////////////////////
 
-app.get('/', (req, res, next) => res.json({ Start: 'The First Get' }));
+// app.get('/', (req, res, next) => res.json({ Start: 'The First Get' }));
 
 module.exports = router;
 app.listen(PORT, () => console.log('The Server is working on ' + PORT));
